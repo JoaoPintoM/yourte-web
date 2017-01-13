@@ -1,33 +1,43 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class WallContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [{ name: '' }]
+      list: []
     }
   }
 
   componentDidMount() {
-    console.log('wall did mount');
-    this.setState({
-      list: [
-        { name: 'La maison du bonheur', score: '80', place: '1040 Etterbeek', author: 'Joao Pinto' },
-        { name: 'Les Haxxors', score: '64', place: '1050 Ixelles', author: 'Bill Gates' },
-        { name: 'Cherche 1 femme (+18 ans)', score: '64', place: '1050 Ixelles', author: 'Marc Enfant' },
-      ]
-    });
+    axios
+     .get('http://localhost:1338/api/colocations')
+     .then((response) => {
+
+       this.setState({
+         list: response.data
+       });
+       console.log(response.data)
+     })
+     .catch((error) => {
+       console.log(error);
+     });
   }
 
   render() {
-    const requestList = this.state.list.map((r) => {
+    const imgStyle = {
+      width: '60px'
+    }
+    const colocs = this.state.list.map((r) => {
       return (
-        <div key={r.name}>
-          <h4>{r.score} % MATCHING</h4>
-          <h5>{r.name}</h5>
-          <span>Situé à: {r.place}</span>
+        <div key={r.id}>
+          <h4>{r.name} - {r.price} €</h4>
+          <span>Situé à: x</span>
           <span>  -  </span>
-          <span>Posté par: {r.author}</span>
+          <span>Posté par: {r.user.username}</span>
+          <br/>
+          <img src={r.user.picture} style={imgStyle} />
+          <br/>
           <br/>
           <br/>
         </div>
@@ -37,7 +47,9 @@ class WallContainer extends Component {
       <div>
         <h2>Wall</h2>
 
-        <div>{requestList}</div>
+        <div>
+          { this.state.list.length > 0 ? colocs : 'Loading' }
+        </div>
       </div>
     )
   }

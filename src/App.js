@@ -5,6 +5,7 @@ import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router';
 import HomeContainer from './home/homeContainer';
 import DashBoardContainer from './dashboard/dashboardContainer';
 import WallContainer from './wall/wallContainer';
+import ColocsWallContainer from './wall/colocsWallContainer';
 import ColocationRequestContainer from './colocationRequest/colocationRequestContainer.js'
 
 const Outer = (props) => (
@@ -26,6 +27,8 @@ const Links = () =>
     <Link to="/about">About</Link>
     <Link to="/contact">Contact</Link>
     <Link to="/colocation">coloc</Link>
+    <Link to="/wall">wall</Link>
+    <Link to="/colocswall">colocsWall</Link>
   </nav>
 
 class App extends Component {
@@ -38,6 +41,7 @@ class App extends Component {
           <Route path="contact" component={Contact}></Route>
           <Route path="dashboard" component={DashBoardContainer}></Route>
           <Route path="wall" component={WallContainer}></Route>
+          <Route path="colocswall" component={ColocsWallContainer}></Route>
           <Route path="colocation" component={ColocationRequestContainer}></Route>
         </Route>
       </Router>

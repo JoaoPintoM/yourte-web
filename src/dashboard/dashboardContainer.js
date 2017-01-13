@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Col } from 'react-bootstrap';
-import ProfileContainer from '../profile/profileContainer';
+import ProfileContainer from '../profile/profileContainer'
 import RequestListContainer from './requestList/requestList.js'
 
 class DashBoardContainer extends Component {

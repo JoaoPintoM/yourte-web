@@ -1,0 +1,13 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "extends": ["standard", "plugin:react/all"],
+  "rules": {
+    "react/no-set-state": 0,
+    "react/jsx-indent": 0,
+    "react/require-optimization": 0,
+    "react/jsx-sort-props": 0
+  }
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from 'axios'
 
 class ColocsWallContainer extends Component {
   constructor(props) {
@@ -12,9 +12,11 @@ class ColocsWallContainer extends Component {
   componentDidMount() {
 
     axios
-     .get('http://localhost:1338/api/users')
+     .get('http://localhost:1338/api/users', { headers: {
+       'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+     }})
      .then((response) => {
-       console.log(response.data[0].username);
+       console.log(response.data[0].username)
 
        this.setState({
          list: response.data

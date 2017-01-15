@@ -60,4 +60,4 @@ class ProfileContainer extends Component {
 
 }
 
-export default ProfileContainer;
+export default ProfileContainer

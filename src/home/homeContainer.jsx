@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { Link } from 'react-router'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
+import axios from 'axios'
 // import SearchBoxExample from '../shared/googleSearch'
 
 class HomeContainer extends Component {
@@ -29,8 +30,14 @@ class HomeContainer extends Component {
   }
 
   fbConnect () {
+    // axios
+    //   .get('http://localhost:1338/auth/facebook')
+    //   .then((result) => {
+    //     console.log(result.data)
+
     this.setState({ showModal: false })
-    this.props.router.push('/colocation')
+    this.props.router.push('/colocswall')
+      // })
   }
 
   render () {
@@ -50,7 +57,7 @@ class HomeContainer extends Component {
              <Modal.Title>{'Se connecter / Sinscrire sur tipi.be'}</Modal.Title>
            </Modal.Header>
            <Modal.Body>
-               <button onClick={this.fbConnect}>{'connexion avec facebook'}</button>
+               <a href='http://tipi.local:1338/auth/facebook'>{'connexion avec facebook'}</a>
            </Modal.Body>
            <Modal.Footer>
             <Button onClick={this.close}>{'Close'}</Button>

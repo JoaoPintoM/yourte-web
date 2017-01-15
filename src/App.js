@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router';
-import HomeContainer from './home/homeContainer';
-import DashBoardContainer from './dashboard/dashboardContainer';
-import WallContainer from './wall/wallContainer';
-import ColocsWallContainer from './wall/colocsWallContainer';
+import React, { Component } from 'react'
+import logo from './logo.svg'
+import './App.css'
+import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
+import HomeContainer from './home/homeContainer'
+import DashBoardContainer from './dashboard/dashboardContainer'
+import WallContainer from './wall/wallContainer'
+import ColocsWallContainer from './wall/colocsWallContainer'
 import ColocationRequestContainer from './colocationRequest/colocationRequestContainer.js'
+import AuthComponent from './shared/auth.js'
 
 const Outer = (props) => (
   <div className="App">
@@ -18,8 +19,16 @@ const Outer = (props) => (
   </div>
 )
 // const Home = () => <HomeContainer><HomeContainer/>;
-const About = () => <div><h1>About</h1></div>;
-const Contact = () => <div><h1>Contact</h1></div>;
+const About = () => <div><h1>About</h1></div>
+const Contact = () => <div><h1>Contact</h1></div>
+
+const isAuth = (nextState, replace, callback) => {
+  const token = window.localStorage.getItem('token')
+  if (!token) {
+    replace('about')
+  }
+  callback()
+}
 
 const Links = () =>
   <nav>
@@ -34,15 +43,16 @@ const Links = () =>
 class App extends Component {
   render() {
     return (
-      <Router history={ hashHistory }>
+      <Router history={ browserHistory }>
         <Route path="/" component={Outer}>
           <IndexRoute component={HomeContainer}></IndexRoute>
           <Route path="about" component={About}></Route>
           <Route path="contact" component={Contact}></Route>
           <Route path="dashboard" component={DashBoardContainer}></Route>
           <Route path="wall" component={WallContainer}></Route>
-          <Route path="colocswall" component={ColocsWallContainer}></Route>
+          <Route path="colocswall" onEnter={isAuth} component={ColocsWallContainer}></Route>
           <Route path="colocation" component={ColocationRequestContainer}></Route>
+          <Route path="token/:token" component={AuthComponent}></Route>
         </Route>
       </Router>
     );
@@ -51,4 +61,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

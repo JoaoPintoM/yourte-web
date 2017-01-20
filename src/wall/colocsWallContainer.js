@@ -1,35 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import {getAll} from '../services/api'
 
 class ColocsWallContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      list: []
-    }
+    console.log("my props", props)
   }
 
-  componentDidMount() {
-
-    axios
-     .get('http://localhost:1338/api/users', { headers: {
-       'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-     }})
-     .then((response) => {
-       console.log(response.data[0].username)
-
-       this.setState({
-         list: response.data
-       });
-       console.log(response.data)
-     })
-     .catch((error) => {
-       console.log(error);
-     });
+  componentDidMount () {
+    this.props.getAll()
   }
 
-  render() {
-    const colocList = this.state.list.map((x) => {
+  render () {
+    const colocList = this.props.list.map((x) => {
       return (
         <div key={x.id}>
           <h4>{x.username}</h4>
@@ -44,11 +29,22 @@ class ColocsWallContainer extends Component {
         <h2>Colocs Wall</h2>
 
         <div>
-          { this.state.list.length > 0 ? colocList : 'Loading' }
+          { this.props.list.length > 0 ? colocList : 'Loading' }
         </div>
       </div>
     )
   }
 }
 
-export default ColocsWallContainer;
+const mapToProps = (store) => {
+  return {
+    list: store.colocations
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAll: getAll(dispatch)
+  }
+}
+export default connect(mapToProps, mapDispatchToProps)(ColocsWallContainer)

@@ -1,30 +1,31 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from 'react'
+import axios from 'axios'
 
 class WallContainer extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       list: []
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     axios
-     .get('http://localhost:1338/api/colocations')
+     .get('http://localhost:1338/api/colocations', { headers: {
+       'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+     }})
      .then((response) => {
-
        this.setState({
          list: response.data
-       });
+       })
        console.log(response.data)
      })
      .catch((error) => {
-       console.log(error);
-     });
+       console.log(error)
+     })
   }
 
-  render() {
+  render () {
     const imgStyle = {
       width: '60px'
     }

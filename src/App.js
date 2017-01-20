@@ -41,7 +41,7 @@ const Links = () =>
   </nav>
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <Router history={ browserHistory }>
         <Route path="/" component={Outer}>
@@ -55,9 +55,7 @@ class App extends Component {
           <Route path="token/:token" component={AuthComponent}></Route>
         </Route>
       </Router>
-    );
-
-    // return <HomeContainer></HomeContainer>
+    )
   }
 }
 

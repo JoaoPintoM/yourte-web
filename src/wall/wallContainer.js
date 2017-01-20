@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { config } from '../config'
 
 class WallContainer extends Component {
   constructor (props) {
@@ -11,7 +12,7 @@ class WallContainer extends Component {
 
   componentDidMount () {
     axios
-     .get('http://localhost:1338/api/colocations', { headers: {
+     .get(`${config.API}/api/colocations`, { headers: {
        'Authorization': 'Bearer ' + window.localStorage.getItem('token')
      }})
      .then((response) => {

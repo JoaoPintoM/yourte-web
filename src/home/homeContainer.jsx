@@ -3,6 +3,7 @@ import { Button, Modal } from 'react-bootstrap'
 import { Link } from 'react-router'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import axios from 'axios'
+import { config } from '../config'
 // import SearchBoxExample from '../shared/googleSearch'
 
 class HomeContainer extends Component {
@@ -41,6 +42,7 @@ class HomeContainer extends Component {
   }
 
   render () {
+    const fbUrl = `${config.API}/auth/facebook`
     return (
       <div>
 {' '}{' '}{' '}
@@ -57,7 +59,7 @@ class HomeContainer extends Component {
              <Modal.Title>{'Se connecter / Sinscrire sur tipi.be'}</Modal.Title>
            </Modal.Header>
            <Modal.Body>
-               <a href='http://tipi.local:1338/auth/facebook'>{'connexion avec facebook'}</a>
+               <a href={fbUrl}>{'connexion avec facebook'}</a>
            </Modal.Body>
            <Modal.Footer>
             <Button onClick={this.close}>{'Close'}</Button>

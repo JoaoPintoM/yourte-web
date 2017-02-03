@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const getAll = (dispatch) => {
   return () => {
@@ -39,7 +39,7 @@ export const createColocation = (dispatch) => {
   console.log(coloc)
   console.log(coloc)
   /**
-   * currying the function, cad tu donnes les variables petit à petit
+   * Curruying the function, cad tu donnes les variables
    */
   return (coloc) => {
     dispatch({

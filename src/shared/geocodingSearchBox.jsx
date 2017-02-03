@@ -1,11 +1,16 @@
 /* global google */
 import React, { Component } from 'react'
 import Geosuggest from 'react-geosuggest'
+import { connect } from 'react-redux'
+// import { getAll } from '../services/api'
 
 class GeocodingSearchBox extends Component {
   constructor (props) {
     super(props)
-
+    console.log(props.val);
+    console.log(props.val);
+    console.log(props.val);
+    console.log(props.app);
     this.state = {
       address: ''
     }
@@ -13,6 +18,7 @@ class GeocodingSearchBox extends Component {
 
   onSuggestSelect = (suggest) => {
     console.log(suggest)
+    this.props.setValue(suggest)
     console.log('great')
   }
 
@@ -27,18 +33,18 @@ class GeocodingSearchBox extends Component {
       <div>
         <h3>{'Search Box'}</h3>
         <Geosuggest
-            ref={el=> this._geoSuggest = el}
+            ref={ el => this._geoSuggest = el }
             placeholder="Start typing!"
-            initialValue="Bruxelles, Belgique"
+            initialValue={this.props.app.geoSearch.label}
             fixtures={fixtures}
             country='be'
             onSuggestSelect={this.onSuggestSelect}
             location={new google.maps.LatLng(50.8425412, 4.371714099999963)}
             radius="20" />
 
-            <button onClick={()=>this._geoSuggest.focus()}>Focus</button>
-            <button onClick={()=>this._geoSuggest.update('New Zeland')}>Update</button>
-            <button onClick={()=>this._geoSuggest.clear()}>Clear</button>
+            <button onClick={() => this._geoSuggest.focus()}>Focus</button>
+            <button onClick={() => this._geoSuggest.update('New Zeland')}>Update</button>
+            <button onClick={() => this._geoSuggest.clear()}>Clear</button>
           <br />
       </div>
     )
@@ -46,4 +52,20 @@ class GeocodingSearchBox extends Component {
 
 }
 
-export default GeocodingSearchBox
+const mapToProps = (store) => {
+  return {
+    app: store.app
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setValue: (value) => {
+      dispatch({
+        type: 'SET_GEOSEARCH',
+        payload: value
+      })
+    }
+  }
+}
+export default connect(mapToProps, mapDispatchToProps)(GeocodingSearchBox)

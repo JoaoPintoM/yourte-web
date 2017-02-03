@@ -44,9 +44,9 @@ class HomeContainer extends Component {
     const fbUrl = `${config.API}/auth/facebook`
     return (
       <div>
-{' '}{' '}{' '}
-<GeocodingSearchBox />
-    {' '}
+        {' '}{' '}{' '}
+        <GeocodingSearchBox val="cumieira, portugal"/>
+        {' '}
         <button onClick={this.open}>{'Je cherche une colocation'}</button>
         <button onClick={this.open}>{'Nous recherchons un colocataire'}</button>
 

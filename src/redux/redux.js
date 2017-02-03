@@ -2,10 +2,12 @@ import { createStore, combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 import usersReducer from './usersReducer'
 import colocationReducer from './colocationReducer'
+import appReducer from './appReducer'
 
 const reducers = combineReducers({
   colocations: colocationReducer,
   users: usersReducer,
+  app: appReducer,
   form: formReducer
 })
 

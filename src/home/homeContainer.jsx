@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { Link } from 'react-router'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
-import axios from 'axios'
 import { config } from '../config'
 // import SearchBoxExample from '../shared/googleSearch'
 

@@ -9,4 +9,4 @@ const prod = {
 console.log(dev)
 console.log(prod)
 
-export const config = prod
+export const config = dev

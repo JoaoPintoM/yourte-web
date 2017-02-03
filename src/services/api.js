@@ -24,3 +24,36 @@ export const getAll = (dispatch) => {
      })
   }
 }
+
+export const createColocation = (dispatch, coloc) => {
+  console.log(coloc)
+  console.log(coloc)
+  console.log(coloc)
+  console.log(coloc)
+  console.log(coloc)
+  console.log(coloc)
+  console.log(coloc)
+  console.log(coloc)
+  return () => {
+    dispatch({
+      type: 'CREATE_COLOC'})
+
+    axios
+     .post('http://localhost:1338/api/colocations/create', {name: 'joao'}, { headers: {
+       'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+     }})
+     .then((response) => {
+       console.log(response.data)
+
+       dispatch({
+         type: 'COLOCATION_CREATED',
+         payload: response.data
+       })
+     })
+     .catch((error) => {
+       console.log(error)
+       dispatch({
+         type: 'CREATE_COLOC_ERROR'})
+     })
+  }
+}

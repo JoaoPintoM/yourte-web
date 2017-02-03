@@ -6,8 +6,9 @@ import HomeContainer from './home/homeContainer'
 import DashBoardContainer from './dashboard/dashboardContainer'
 import WallContainer from './wall/wallContainer'
 import ColocsWallContainer from './wall/colocsWallContainer'
-import ColocationRequestContainer from './colocationRequest/colocationRequestContainer.js'
-import AuthComponent from './shared/auth.js'
+import ColocationRequestContainer from './colocationRequest/colocationRequestContainer'
+import AuthComponent from './shared/auth'
+import CreationPage from './colocations/creation'
 
 const Outer = (props) => (
   <div className="App">
@@ -38,6 +39,7 @@ const Links = () =>
     <Link to="/colocation">coloc</Link>
     <Link to="/wall">wall</Link>
     <Link to="/colocswall">colocsWall</Link>
+    <Link to="/colocations/create">create</Link>
   </nav>
 
 class App extends Component {
@@ -53,6 +55,7 @@ class App extends Component {
           <Route path="colocswall" onEnter={isAuth} component={ColocsWallContainer}></Route>
           <Route path="colocation" component={ColocationRequestContainer}></Route>
           <Route path="token/:token" component={AuthComponent}></Route>
+          <Route path="colocations/create" component={CreationPage}></Route>
         </Route>
       </Router>
     )

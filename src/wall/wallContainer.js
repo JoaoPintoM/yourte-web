@@ -35,10 +35,10 @@ class WallContainer extends Component {
         <div key={r.id}>
           <h4>{r.name} - {r.price} €</h4>
           <span>Situé à: x</span>
-          <span>  -  </span>
+          <span>{' - '}</span>
           <span>Posté par: {r.user.username}</span>
           <br/>
-          <img src={r.user.picture} style={imgStyle} />
+          <img src={r.user.picture} role='presentation' style={imgStyle} />
           <br/>
           <br/>
           <br/>

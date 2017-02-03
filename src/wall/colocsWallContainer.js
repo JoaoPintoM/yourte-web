@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { connect } from 'react-redux'
-import {getAll} from '../services/api'
+import { getAll } from '../services/api'
 
 class ColocsWallContainer extends Component {
-  constructor(props) {
-    super(props);
-    console.log("my props", props)
+  constructor (props) {
+    super(props)
+    console.log('my props', props)
   }
 
   componentDidMount () {

@@ -1,8 +1,10 @@
 import { createStore, combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import usersReducer from './usersReducer'
-import colocationReducer from './colocationReducer'
-import appReducer from './appReducer'
+import {
+  appReducer,
+  usersReducer,
+  colocationReducer
+} from './reducers/index'
 
 const reducers = combineReducers({
   colocations: colocationReducer,
@@ -11,7 +13,5 @@ const reducers = combineReducers({
   form: formReducer
 })
 
-// const store = createStore(reducers)
 const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-
 export default store

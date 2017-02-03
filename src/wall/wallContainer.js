@@ -1,36 +1,20 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { config } from '../config'
+import { connect } from 'react-redux'
+import { getAll } from '../services/api'
 
 class WallContainer extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      list: []
-    }
-  }
 
   componentDidMount () {
-    axios
-     .get(`${config.API}/api/colocations`, { headers: {
-       'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-     }})
-     .then((response) => {
-       this.setState({
-         list: response.data
-       })
-       console.log(response.data)
-     })
-     .catch((error) => {
-       console.log(error)
-     })
+    this.props.getAll()
   }
 
   render () {
     const imgStyle = {
       width: '60px'
     }
-    const colocs = this.state.list.map((r) => {
+    const colocs = this.props.colocs.map((r) => {
       return (
         <div key={r.id}>
           <h4>{r.name} - {r.price} €</h4>
@@ -50,11 +34,22 @@ class WallContainer extends Component {
         <h2>Wall</h2>
 
         <div>
-          { this.state.list.length > 0 ? colocs : 'Loading' }
+          { this.props.colocs.length > 0 ? colocs : 'Loading' }
         </div>
       </div>
     )
   }
 }
 
-export default WallContainer;
+const mapToProps = (store) => {
+  return {
+    colocs: store.colocations
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAll: getAll(dispatch)
+  }
+}
+export default connect(mapToProps, mapDispatchToProps)(WallContainer)

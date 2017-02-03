@@ -7,12 +7,11 @@ class DashBoardContainer extends Component {
   // constructor(props) {
   //   super(props);
   // }
-
-  componentDidMount() {
-    console.log('dashboard did mount');
+  componentDidMount () {
+    console.log('dashboard did mount')
   }
-  render() {
 
+  render () {
     return (
       <div>
         <h2>DashBoard</h2>
@@ -25,7 +24,6 @@ class DashBoardContainer extends Component {
       </div>
     )
   }
-
 }
 
-export default DashBoardContainer;
+export default DashBoardContainer

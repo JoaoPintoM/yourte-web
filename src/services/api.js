@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 export const getAll = (dispatch) => {
   return () => {
@@ -7,14 +7,12 @@ export const getAll = (dispatch) => {
     })
 
     axios
-      .get('http://localhost:1338/api/users', {
+      .get('http://localhost:1338/api/colocations', {
         headers: {
           'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         }
       })
       .then((response) => {
-        console.log(response.data[0].username)
-
         dispatch({
           type: 'GET_ALL_SUCCESS',
           payload: response.data
@@ -30,14 +28,6 @@ export const getAll = (dispatch) => {
 }
 
 export const createColocation = (dispatch) => {
-  console.log(coloc)
-  console.log(coloc)
-  console.log(coloc)
-  console.log(coloc)
-  console.log(coloc)
-  console.log(coloc)
-  console.log(coloc)
-  console.log(coloc)
   /**
    * Curruying the function, cad tu donnes les variables
    */
@@ -45,9 +35,8 @@ export const createColocation = (dispatch) => {
     dispatch({
       type: 'CREATE_COLOC'
     })
-
     axios
-      .post('http://localhost:1338/api/colocations/create', {name: 'joao'}, {
+      .post('http://localhost:1338/api/colocations/create', coloc, {
         headers: {
           'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         }

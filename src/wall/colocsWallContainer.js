@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getAll } from '../services/api'
+import { getUsers } from '../services/users'
 
 class ColocsWallContainer extends Component {
   constructor (props) {
     super(props)
+    console.log('Mais ici cest les ROOMATES')
     console.log('my props', props)
   }
 
   componentDidMount () {
-    this.props.getAll()
+    this.props.getUsers()
   }
 
   render () {
-    const colocList = this.props.list.map((x) => {
+    const colocList = this.props.users.map((x) => {
       return (
         <div key={x.id}>
           <h4>{x.username}</h4>
@@ -28,7 +29,7 @@ class ColocsWallContainer extends Component {
         <h2>Colocs Wall</h2>
 
         <div>
-          { this.props.list.length > 0 ? colocList : 'Loading' }
+          { this.props.users.length > 0 ? colocList : 'Loading' }
         </div>
       </div>
     )
@@ -37,13 +38,13 @@ class ColocsWallContainer extends Component {
 
 const mapToProps = (store) => {
   return {
-    list: store.colocations
+    users: store.users
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAll: getAll(dispatch)
+    getUsers: getUsers(dispatch)
   }
 }
 export default connect(mapToProps, mapDispatchToProps)(ColocsWallContainer)

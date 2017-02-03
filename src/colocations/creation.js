@@ -11,7 +11,7 @@ class CreationPage extends Component {
 
   handleSubmit = (values) => {
     console.log(values)
-    this.props.createColocation(values, values)
+    this.props.createColocation(values)
   }
   render () {
     return (

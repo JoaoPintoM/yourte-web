@@ -22,6 +22,12 @@
   to { transform: rotate(360deg); }
 }
 
+nav a {
+  padding-right: 20px;
+  font-weight: bold;
+  color: #4caf50;
+}
+
 
 
 .geosuggest__suggests--hidden {

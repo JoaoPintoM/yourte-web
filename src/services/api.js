@@ -1,16 +1,26 @@
 import axios from 'axios'
 
 export const getAll = (dispatch) => {
-  return () => {
+  return (lat, lng) => {
     dispatch({
       type: 'GET_ALL_START'
     })
+
+    console.log('ALLER JOAOAJAOHOZHAO')
+    console.log(lat, lng)
+    const params = {
+      lat,
+      lng
+    }
+
+    console.log(params)
 
     axios
       .get('http://localhost:1338/api/colocations', {
         headers: {
           'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-        }
+        },
+        params
       })
       .then((response) => {
         dispatch({

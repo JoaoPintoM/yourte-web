@@ -19,8 +19,9 @@ class CreationPage extends Component {
       const final = Object.assign({}, values,
         { images: this.state.imgUrls, location: this.state.location })
 
-        console.log(final)
-      // this.props.createColocation(final)
+      console.log('final')
+      console.log(final)
+      this.props.createColocation(final)
       return this.props.router.push('/wall')
     }
   }

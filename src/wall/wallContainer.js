@@ -12,6 +12,10 @@ class WallContainer extends Component {
     this.props.getAll()
   }
 
+  handleNewAdress = (adress) => {
+    this.props.getAll(adress.location.lat, adress.location.lng)
+  }
+
   render () {
     const userImgStyle = { width: '60px' }
     const imgStyle = { width: '250px' }
@@ -35,7 +39,7 @@ class WallContainer extends Component {
     return (
       <div>
         <h2>Wall</h2>
-        <GeocodingSearchBox val="" />
+        <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress} />
         <div>
           { this.props.colocs.length > 0 ? colocs : 'Loading' }
         </div>

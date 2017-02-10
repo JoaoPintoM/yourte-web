@@ -7,19 +7,18 @@ import { connect } from 'react-redux'
 class GeocodingSearchBox extends Component {
   constructor (props) {
     super(props)
-    console.log(props.val);
-    console.log(props.val);
-    console.log(props.val);
-    console.log(props.app);
+    console.log(props.val)
+    console.log(props.val)
+    console.log(props.val)
+    console.log(props.app)
     this.state = {
       address: ''
     }
   }
 
   onSuggestSelect = (suggest) => {
-    console.log(suggest)
     this.props.setValue(suggest)
-    console.log('great')
+    this.props.onAdressSet({ label: suggest.label, location: suggest.location })
   }
 
   render () {

@@ -4,6 +4,7 @@ import { config } from '../config'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { connect } from 'react-redux'
 import { getAll } from '../services/api'
+import { Col } from 'react-bootstrap'
 
 class WallContainer extends Component {
 
@@ -16,7 +17,7 @@ class WallContainer extends Component {
     const imgStyle = { width: '250px' }
     const colocs = this.props.colocs.map((r) => {
       return (
-        <div key={r.id}>
+        <Col sm={6} md={3} key={r.id} >
           <h4>{r.name} - {r.price} €</h4>
           <img src={r.images[0]} role='presentation' style={imgStyle} />
           <br />
@@ -28,7 +29,7 @@ class WallContainer extends Component {
           <br/>
           <br/>
           <br/>
-        </div>
+        </Col>
       )
     })
     return (

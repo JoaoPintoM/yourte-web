@@ -3,24 +3,41 @@ import { Field, reduxForm } from 'redux-form'
 import UploadComponent from '../shared/uploadComponent'
 
 class CreateForm extends Component {
+  constructor (props) {
+    super(props)
+    this.state = { images: [] }
+  }
+
   handleSubmit = (values) => {
-    console.log(values)
+    console.log('values', values)
   }
 
   handleImagesUploaded = (images) => {
     console.log('ici .')
-    console.log(images)
+    this.setState({ images })
+    this.props.onNewImages(images)
   }
 
   render () {
     const { handleSubmit } = this.props
+
+    const imgUrlFields = this.state.images.map(u => {
+      console.log(u)
+      return (
+        <Field name="picture"
+          component="input" type="text"
+          key={u}
+          value={u} />
+      )
+    })
+
     return (
       <div>
         <UploadComponent onNewImages={this.handleImagesUploaded}></UploadComponent>
        <form onSubmit={handleSubmit}>
          <div>
            <label htmlFor="name">Colocation Name</label>
-           <Field name="name" component="input" type="text"/>
+           <Field name="name" component="input" type="text" />
          </div>
          <div>
            <label htmlFor="price">Loyer</label>
@@ -37,6 +54,8 @@ class CreateForm extends Component {
             <Field name="longdesc" component="textarea"/>
           </div>
         </div>
+
+        <div>{imgUrlFields}</div>
 
          <button type="submit">Submit</button>
        </form>

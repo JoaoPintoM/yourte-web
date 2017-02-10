@@ -12,18 +12,19 @@ class WallContainer extends Component {
   }
 
   render () {
-    const imgStyle = {
-      width: '60px'
-    }
+    const userImgStyle = { width: '60px' }
+    const imgStyle = { width: '250px' }
     const colocs = this.props.colocs.map((r) => {
       return (
         <div key={r.id}>
           <h4>{r.name} - {r.price} €</h4>
+          <img src={r.images[0]} role='presentation' style={imgStyle} />
+          <br />
           <span>Situé à: x</span>
           <span>{' - '}</span>
           <span>Posté par: {r.user.username}</span>
           <br/>
-          <img src={r.user.picture} role='presentation' style={imgStyle} />
+          <img src={r.user.picture} role='presentation' style={userImgStyle} />
           <br/>
           <br/>
           <br/>

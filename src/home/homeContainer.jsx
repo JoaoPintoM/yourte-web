@@ -3,6 +3,7 @@ import { Button, Modal } from 'react-bootstrap'
 import { Link } from 'react-router'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { config } from '../config'
+import { Image } from 'cloudinary-react'
 // import SearchBoxExample from '../shared/googleSearch'
 
 class HomeContainer extends Component {
@@ -44,6 +45,7 @@ class HomeContainer extends Component {
     const fbUrl = `${config.API}/auth/facebook`
     return (
       <div>
+         <Image cloudName="stagounet" publicId="sample" width="300" crop="scale"/>
         {' '}{' '}{' '}
         <GeocodingSearchBox val="cumieira, portugal"/>
         {' '}

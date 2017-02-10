@@ -36,9 +36,9 @@ const Links = () =>
     <Link to="/">Home</Link>
     <Link to="/about">About</Link>
     <Link to="/contact">Contact</Link>
+    <Link to="/colocswall">colocsWall</Link>
     <Link to="/colocation">coloc</Link>
     <Link to="/wall">wall</Link>
-    <Link to="/colocswall">colocsWall</Link>
     <Link to="/colocations/create">create</Link>
   </nav>
 

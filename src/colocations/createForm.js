@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
+import UploadComponent from '../shared/uploadComponent'
 
 class CreateForm extends Component {
   handleSubmit = (values) => {
     console.log(values)
   }
 
+  handleImagesUploaded = (images) => {
+    console.log('ici .')
+    console.log(images)
+  }
+
   render () {
     const { handleSubmit } = this.props
     return (
+      <div>
+        <UploadComponent onNewImages={this.handleImagesUploaded}></UploadComponent>
        <form onSubmit={handleSubmit}>
          <div>
            <label htmlFor="name">Colocation Name</label>
@@ -32,6 +40,7 @@ class CreateForm extends Component {
 
          <button type="submit">Submit</button>
        </form>
+     </div>
       )
   }
 }

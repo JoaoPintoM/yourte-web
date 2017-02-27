@@ -7,12 +7,11 @@ import { getAll } from '../services/api'
 import { Col } from 'react-bootstrap'
 // import { Range } from 'rc-slider'
 
-const Slider = require('rc-slider');
-const createSliderWithTooltip = Slider.createSliderWithTooltip;
-const Range = createSliderWithTooltip(Slider.Range);
+const Slider = require('rc-slider')
+const createSliderWithTooltip = Slider.createSliderWithTooltip
+const Range = createSliderWithTooltip(Slider.Range)
 
 import 'rc-slider/assets/index.css'
-// slider/index.css
 
 class WallContainer extends Component {
 
@@ -21,6 +20,7 @@ class WallContainer extends Component {
   }
 
   handleSlider = (vals) => {
+    console.log(this.props.app.geoSearch)
     console.log(vals)
   }
 
@@ -68,7 +68,8 @@ class WallContainer extends Component {
 
 const mapToProps = (store) => {
   return {
-    colocs: store.colocations
+    colocs: store.colocations,
+    app: store.app
   }
 }
 

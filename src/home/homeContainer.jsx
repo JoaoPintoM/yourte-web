@@ -4,7 +4,6 @@ import { Link } from 'react-router'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { config } from '../config'
 import { Image } from 'cloudinary-react'
-// import SearchBoxExample from '../shared/googleSearch'
 
 class HomeContainer extends Component {
   constructor (props) {
@@ -31,21 +30,14 @@ class HomeContainer extends Component {
   }
 
   fbConnect () {
-    // axios
-    //   .get('http://localhost:1338/auth/facebook')
-    //   .then((result) => {
-    //     console.log(result.data)
-
     this.setState({ showModal: false })
     this.props.router.push('/colocswall')
-      // })
   }
 
   render () {
     const fbUrl = `${config.API}/auth/facebook`
     return (
       <div>
-         <Image cloudName="stagounet" publicId="sample" width="300" crop="scale"/>
         {' '}{' '}{' '}
         <GeocodingSearchBox val="cumieira, portugal"/>
         {' '}

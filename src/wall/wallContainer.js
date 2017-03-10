@@ -4,7 +4,7 @@ import { config } from '../config'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { connect } from 'react-redux'
 import { getAll } from '../services/api'
-import { Col } from 'react-bootstrap'
+import { Col, Button, Modal } from 'react-bootstrap'
 // import { Range } from 'rc-slider'
 
 const Slider = require('rc-slider')
@@ -15,7 +15,28 @@ import 'rc-slider/assets/index.css'
 
 class WallContainer extends Component {
 
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      showModal: false,
+      currentColoc: {
+        images: []
+      }
+    }
+  }
+
+  close () {
+    this.setState({ showModal: false })
+  }
+
+  open (coloc) {
+    console.log(coloc)
+    this.setState({ showModal: true, currentColoc: coloc })
+  }
+
   componentDidMount () {
+    this.close = this.close.bind(this)
     this.props.getAll()
   }
 
@@ -37,7 +58,7 @@ class WallContainer extends Component {
     const imgStyle = { width: '250px' }
     const colocs = this.props.colocs.map((r) => {
       return (
-        <Col sm={6} md={3} key={r.id} >
+        <Col sm={6} md={3} key={r.id} onClick={ this.open.bind(this, r) }>
           <h4>{r.name} - {r.price} €</h4>
           <img src={r.images[0]} role='presentation' style={imgStyle} />
           <br />
@@ -61,6 +82,19 @@ class WallContainer extends Component {
         <div>
           { this.props.colocs.length > 0 ? colocs : 'Loading' }
         </div>
+
+        <Modal show={this.state.showModal} onHide={this.close}>
+          <Modal.Header closeButton>
+            <Modal.Title>{'info'}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+              <p>{this.state.currentColoc.name}</p>
+              <img src={this.state.currentColoc.images[0]} role='presentation' style={imgStyle} />
+          </Modal.Body>
+          <Modal.Footer>
+           <Button onClick={this.close}>{'Close'}</Button>
+         </Modal.Footer>
+       </Modal>
       </div>
     )
   }

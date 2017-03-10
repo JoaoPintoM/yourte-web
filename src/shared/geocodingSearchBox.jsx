@@ -18,7 +18,7 @@ class GeocodingSearchBox extends Component {
 
   onSuggestSelect = (suggest) => {
     this.props.setValue(suggest)
-    this.props.onAdressSet({ label: suggest.label, location: suggest.location })
+    // this.props.onAdressSet({ label: suggest.label, location: suggest.location })
   }
 
   render () {

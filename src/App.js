@@ -9,14 +9,20 @@ import ColocsWallContainer from './wall/colocsWallContainer'
 import ColocationRequestContainer from './colocationRequest/colocationRequestContainer'
 import AuthComponent from './shared/auth'
 import CreationPage from './colocations/creation'
+import HeaderComponent from './shared/headerComponent'
 
 const Outer = (props) => (
   <div className="App">
+    <HeaderComponent />
     <div className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <h2>Welcome to tipi.be</h2>
     </div>
-    <div><Links />{props.children}</div>
+    <div>
+      <Links />
+      <p>pépé</p>
+      {props.children}
+    </div>
   </div>
 )
 // const Home = () => <HomeContainer><HomeContainer/>;
@@ -34,11 +40,14 @@ const isAuth = (nextState, replace, callback) => {
 const Links = () =>
   <nav>
     <Link to="/">Home</Link>
-    <Link to="/about">About</Link>
-    <Link to="/contact">Contact</Link>
-    <Link to="/colocswall">colocsWall</Link>
-    <Link to="/colocation">coloc</Link>
+    {
+    // <Link to="/about">About</Link>
+    // <Link to="/contact">Contact</Link>
+    // <Link to="/colocswall">colocsWall</Link>
+    // <Link to="/colocation">coloc</Link>
+    }
     <Link to="/wall">wall</Link>
+    // <Link to="/colocswall">colocsWall</Link>
     <Link to="/colocations/create">create</Link>
   </nav>
 

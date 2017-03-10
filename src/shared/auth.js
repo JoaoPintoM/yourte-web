@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import jwtDecode from 'jwt-decode'
 
 class AuthComponent extends Component {
   constructor (props) {
@@ -6,6 +7,7 @@ class AuthComponent extends Component {
   }
 
   componentWillMount () {
+    // const decoded = jwtDecode(this.props.params.token)
     window.localStorage.setItem('token', this.props.params.token)
     console.log(window.localStorage.getItem('token'))
   }

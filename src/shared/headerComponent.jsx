@@ -1,22 +1,27 @@
 import React, { Component } from 'react'
-import { getLocalUser } from '../services/app'
+import { getLocalUser, disconnectLocaluser } from '../services/app'
 import { connect } from 'react-redux'
+import { AuthNavHeader, NotAuthNavHeader } from './dumbs/forHeader'
+import { config } from '../config'
 
 class HeaderComponent extends Component {
 
-  componentWillMount = () => {
-    this.props.getLocalUser()
-  }
+  componentWillMount = () => this.props.getLocalUser()
+  handleDisconnect = () => this.props.disconnect()
 
   render = () => {
-    let authType = <p>{'not auth'}</p>
+    const fbUrl = `${config.API}/auth/facebook`
+    console.log(fbUrl)
+    let authType = <NotAuthNavHeader fbUrl={fbUrl} />
+
     if (this.props.user.isAuth) {
-      authType = <p>{this.props.user.username}</p>
+      authType = <AuthNavHeader
+                    user={this.props.user}
+                    onDisconnect={this.handleDisconnect}/>
     }
 
     return (
       <div>
-        <h1>Header</h1>
         {authType}
       </div>
     )
@@ -32,7 +37,8 @@ const mapToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getLocalUser: getLocalUser(dispatch)
+    getLocalUser: getLocalUser(dispatch),
+    disconnect: disconnectLocaluser(dispatch)
   }
 }
 export default connect(mapToProps, mapDispatchToProps)(HeaderComponent)

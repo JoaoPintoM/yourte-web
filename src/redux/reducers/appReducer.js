@@ -16,6 +16,8 @@ const appReducer = (state = initialAppState, action) => {
       return { ...state, localUser: action.payload }
     case 'GET_LOCAL_USER_ERROR':
       return { ...state, localUser: { isAuth: false } }
+    case 'REMOVE_LOCAL_USER':
+      return { ...state, localUser: { isAuth: false } }
     default:
       return state
   }

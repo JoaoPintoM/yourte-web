@@ -20,7 +20,6 @@ const Outer = (props) => (
     </div>
     <div>
       <Links />
-      <p>pépé</p>
       {props.children}
     </div>
   </div>

@@ -17,3 +17,11 @@ export const getLocalUser = (dispatch) =>
       })
     }
   }
+
+export const disconnectLocaluser = (dispatch) =>
+  () => {
+    window.localStorage.setItem('token', null)
+    return dispatch({
+      type: 'REMOVE_LOCAL_USER'
+    })
+  }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { config } from '../config'
 
 export const getUsers = (dispatch) => {
   return () => {
@@ -6,7 +7,7 @@ export const getUsers = (dispatch) => {
       type: 'GET_USERS_START'
     })
     axios
-      .get('http://localhost:1338/api/users', {
+      .get(`${config.API}/api/users`, {
         headers: {
           'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         }

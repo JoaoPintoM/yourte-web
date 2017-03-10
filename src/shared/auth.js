@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getLocalUser } from '../services/app'
+import { Link } from 'react-router'
 // import jwtDecode from 'jwt-decode'
 
 class AuthComponent extends Component {
@@ -12,7 +13,16 @@ class AuthComponent extends Component {
   render () {
     const props = this.props
     return (
-        <div><h1>you are connected {JSON.stringify(props.params.token)}</h1></div>
+        <div>
+          <h1>{'you are connected'}</h1>
+          <h2>{'Welcome to tipi.be'}</h2>
+
+          <br />
+          <br />
+
+          <p>{'See the our Colocation Wall: '} <Link to="/wall">wall</Link></p>
+          <p>{'Create a new colocation: '} <Link to="/colocations/create">create</Link></p>
+        </div>
     )
   }
 }

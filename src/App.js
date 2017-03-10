@@ -16,7 +16,6 @@ const Outer = (props) => (
     <HeaderComponent />
     <div className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
-      <h2>Welcome to tipi.be</h2>
     </div>
     <div>
       <Links />

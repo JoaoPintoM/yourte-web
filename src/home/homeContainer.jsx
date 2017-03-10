@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap'
 import { Link } from 'react-router'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { config } from '../config'
-import { Image } from 'cloudinary-react'
+// import { Image } from 'cloudinary-react'
 
 class HomeContainer extends Component {
   constructor (props) {

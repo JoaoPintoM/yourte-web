@@ -8,13 +8,19 @@ class HeaderComponent extends Component {
     this.props.getLocalUser()
   }
 
-  render = () => (
-    <div>
-      <h1>Header</h1>
-      <p>{JSON.stringify(this.props.app.geoSearch)}</p>
-      <p>{JSON.stringify(this.props.app.localUser)}</p>
-    </div>
-  )
+  render = () => {
+    let authType = <p>{'not auth'}</p>
+    if (this.props.user.isAuth) {
+      authType = <p>{this.props.user.username}</p>
+    }
+
+    return (
+      <div>
+        <h1>Header</h1>
+        {authType}
+      </div>
+    )
+  }
 }
 
 const mapToProps = (store) => {

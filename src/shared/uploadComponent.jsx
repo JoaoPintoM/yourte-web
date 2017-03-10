@@ -20,7 +20,7 @@ class UploadComponent extends Component {
 
     const uploads = files.map(f => this.handleImageUploadPromise(f))
     Promise.all(uploads).then((result) => {
-      const urls = result.map(r => {
+      const urls = result.map(r => { // eslint-disable-line
         if (r.body.secure_url !== '') {
           return r.body.secure_url
         }
@@ -43,11 +43,11 @@ class UploadComponent extends Component {
 
   render () {
     const imgList = this.state.uploadedFiles.map((f) => {
-      return <img key={f.name} src={f.preview} style={{width: '150px'}}/>
+      return <img key={f.name} role="presentation" src={f.preview} style={{width: '150px'}}/>
     })
 
     const uploadedList = this.state.uploadedUrls.map((u) => {
-      return <img key={u} src={u} style={{width: '200px'}}/>
+      return <img key={u} role="presentation" src={u} style={{width: '200px'}}/>
     })
 
     return (

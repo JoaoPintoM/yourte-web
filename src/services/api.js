@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { config } from '../config'
 
 export const getAll = (dispatch) => {
   return (lat, lng) => {
@@ -6,17 +7,13 @@ export const getAll = (dispatch) => {
       type: 'GET_ALL_START'
     })
 
-    console.log('ALLER JOAOAJAOHOZHAO')
-    console.log(lat, lng)
     const params = {
       lat,
       lng
     }
 
-    console.log(params)
-
     axios
-      .get('http://localhost:1338/api/colocations', {
+      .get(`${config.API}/api/colocations`, {
         headers: {
           'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         },
@@ -46,7 +43,7 @@ export const createColocation = (dispatch) => {
       type: 'CREATE_COLOC'
     })
     axios
-      .post('http://localhost:1338/api/colocations/create', coloc, {
+      .post(`${config.API}/api/colocations/create`, coloc, {
         headers: {
           'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         }

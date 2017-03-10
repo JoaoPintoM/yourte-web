@@ -60,7 +60,7 @@ class App extends Component {
           <Route path="about" component={About}></Route>
           <Route path="contact" component={Contact}></Route>
           <Route path="dashboard" component={DashBoardContainer}></Route>
-          <Route path="wall" component={WallContainer}></Route>
+          <Route path="wall" onEnter={isAuth} component={WallContainer}></Route>
           <Route path="colocswall" onEnter={isAuth} component={ColocsWallContainer}></Route>
           <Route path="colocation" component={ColocationRequestContainer}></Route>
           <Route path="token/:token" component={AuthComponent}></Route>

@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getLocalUser } from '../services/app'
 // import jwtDecode from 'jwt-decode'
 
 class AuthComponent extends Component {
-  constructor (props) {
-    super(props)
-  }
-
   componentWillMount () {
-    // const decoded = jwtDecode(this.props.params.token)
     window.localStorage.setItem('token', this.props.params.token)
-    console.log(window.localStorage.getItem('token'))
+    this.props.getLocalUser()
   }
 
   render () {
@@ -20,4 +17,9 @@ class AuthComponent extends Component {
   }
 }
 
-export default AuthComponent
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getLocalUser: getLocalUser(dispatch)
+  }
+}
+export default connect(null, mapDispatchToProps)(AuthComponent)

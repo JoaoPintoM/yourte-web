@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import { config } from '../config'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { connect } from 'react-redux'
 import { getAll } from '../services/api'

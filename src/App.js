@@ -63,7 +63,7 @@ class App extends Component {
           <Route path="colocswall" onEnter={isAuth} component={ColocsWallContainer}></Route>
           <Route path="colocation" component={ColocationRequestContainer}></Route>
           <Route path="token/:token" component={AuthComponent}></Route>
-          <Route path="colocations/create" component={CreationPage}></Route>
+          <Route path="colocations/create" onEnter={isAuth} component={CreationPage}></Route>
         </Route>
       </Router>
     )

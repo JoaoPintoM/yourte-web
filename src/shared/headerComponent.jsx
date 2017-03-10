@@ -11,7 +11,6 @@ class HeaderComponent extends Component {
 
   render = () => {
     const fbUrl = `${config.API}/auth/facebook`
-    console.log(fbUrl)
     let authType = <NotAuthNavHeader fbUrl={fbUrl} />
 
     if (this.props.user.isAuth) {

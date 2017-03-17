@@ -22,7 +22,8 @@ class UploadComponent extends Component {
     Promise.all(uploads).then((result) => {
       const urls = result.map(r => { // eslint-disable-line
         if (r.body.secure_url !== '') {
-          return r.body.secure_url
+          // return r.body.secure_url
+          return r.body.public_id
         }
       })
 

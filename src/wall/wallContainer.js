@@ -57,8 +57,9 @@ class WallContainer extends Component {
     const colocs = this.props.colocs.map((r) => {
       return (
         <Col sm={6} md={3} key={r.id} onClick={ this.open.bind(this, r) }>
-          <h4>{r.name} - {r.price} €</h4>
-          <img src={r.images[0]} role='presentation' style={imgStyle} />
+          <p>{r.name} - {r.price} €</p>
+          <img src={'http://res.cloudinary.com/stagounet/image/upload/c_scale,h_320,w_500/' + r.images[0] + '.jpg'}
+            role='presentation' style={imgStyle} />
           <br />
           <span>Situé à: </span>
           <span>{' - '}{r.adress}</span>

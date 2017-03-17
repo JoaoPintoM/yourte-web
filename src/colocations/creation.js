@@ -9,7 +9,11 @@ class CreationPage extends Component {
     this.state = { imgUrls: [], location: null }
   }
 
-  handleImages = (images) => this.setState({ imgUrls: images })
+  // handleImages = (images) => this.setState({ imgUrls: images })
+  handleImages = (images) => {
+    console.log(images)
+    this.setState({ imgUrls: images })
+  }
   handleNewAdress = (adress) => this.setState({ location: adress })
 
   handleSubmit = (values) => {

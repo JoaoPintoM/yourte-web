@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Dropzone from 'react-dropzone'
 import request from 'superagent'
+import { config } from '../config'
 
 const CLOUDINARY_UPLOAD_PRESET = 'teststagounet'
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/stagounet/upload'
@@ -42,14 +43,19 @@ class UploadComponent extends Component {
                      .field('file', file)
   }
 
+  getImageMedUrl = (image) =>
+    `${config.IMAGES_URL}${config.IMG_MED_SCALE}/${image}${config.JPG}`
+
   render () {
     const imgList = this.state.uploadedFiles.map((f) => {
       return <img key={f.name} role="presentation" src={f.preview} style={{width: '150px'}}/>
     })
 
-    const uploadedList = this.state.uploadedUrls.map((u) => {
-      return <img key={u} role="presentation" src={u} style={{width: '200px'}}/>
-    })
+    const uploadedList = this.state.uploadedUrls.map(
+      (u) =>
+        <img key={u} role="presentation"
+          src={this.getImageMedUrl(u)} style={{width: '200px'}}/>
+    )
 
     return (
       <form>

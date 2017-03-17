@@ -3,6 +3,7 @@ import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { connect } from 'react-redux'
 import { getAll } from '../services/api'
 import { Col, Button, Modal } from 'react-bootstrap'
+import { config } from '../config'
 // import { Range } from 'rc-slider'
 
 const Slider = require('rc-slider')
@@ -51,6 +52,9 @@ class WallContainer extends Component {
     }
   }
 
+  getImageMedUrl = (image) =>
+    `${config.IMAGES_URL}${config.IMG_MED_SCALE}/${image}${config.JPG}`
+
   render () {
     const userImgStyle = { width: '60px' }
     const imgStyle = { width: '250px' }
@@ -58,8 +62,7 @@ class WallContainer extends Component {
       return (
         <Col sm={6} md={3} key={r.id} onClick={ this.open.bind(this, r) }>
           <p>{r.name} - {r.price} €</p>
-          <img src={'http://res.cloudinary.com/stagounet/image/upload/c_scale,h_320,w_500/' + r.images[0] + '.jpg'}
-            role='presentation' style={imgStyle} />
+          <img src={this.getImageMedUrl(r.images[0])} role='presentation' style={imgStyle} />
           <br />
           <span>Situé à: </span>
           <span>{' - '}{r.adress}</span>

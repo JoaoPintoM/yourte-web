@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { Alert } from 'react-bootstrap'
 import UploadComponent from '../shared/uploadComponent'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 
@@ -9,9 +10,24 @@ class CreateForm extends Component {
   handleImagesUploaded = (images) => this.props.onNewImages(images)
 
   render () {
-    const { handleSubmit } = this.props
+    console.log('fuck mani')
+    const { handleSubmit, errorMessage } = this.props
+    console.log(errorMessage)
+    const oioi = () => {
+      console.log('in oioi')
+      console.log(this.props)
+      // if (!this.errorMessage) {
+      //   return <p>'toto'</p>
+      // }
+      return (
+        <Alert bsStyle="warning">
+          <strong>{'joao'}</strong>
+        </Alert>
+      )
+    }
     return (
       <div>
+        {oioi}
         <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress} />
         <UploadComponent onNewImages={this.handleImagesUploaded} />
 

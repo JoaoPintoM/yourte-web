@@ -1,16 +1,23 @@
+import _ from 'lodash'
 import axios from 'axios'
 import { config } from '../config'
 
+export const setGeoPosition = (dispatch) =>
+  (payload) => dispatch({ type: 'SET_GEOPOSITION', payload })
+
+export const setPriceRange = (dispatch) =>
+  (payload) => dispatch({ type: 'SET_PRICE_RANGE', payload })
+
 export const getAll = (dispatch) => {
-  return (lat, lng) => {
+  return (search) => {
     dispatch({
       type: 'GET_ALL_START'
     })
 
-    const params = {
-      lat,
-      lng
-    }
+    const { lng, lat, minPrice, maxPrice } = search
+    // const q = { lng, lat }
+    // const q = search
+    const params = _(search).omitBy(_.isUndefined).omitBy(_.isNull).value()
 
     axios
       .get(`${config.API}/api/colocations`, {

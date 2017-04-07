@@ -51,10 +51,8 @@ class UploadComponent extends Component {
       return <img key={f.name} role="presentation" src={f.preview} style={{width: '150px'}}/>
     })
 
-    const uploadedList = this.state.uploadedUrls.map(
-      (u) =>
-        <img key={u} role="presentation"
-          src={this.getImageMedUrl(u)} style={{width: '200px'}}/>
+    const uploadedList = this.state.uploadedUrls.map((u) =>
+      <img key={u} role="presentation" src={this.getImageMedUrl(u)} style={{width: '200px'}}/>
     )
 
     return (

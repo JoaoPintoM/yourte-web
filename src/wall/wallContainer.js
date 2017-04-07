@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { connect } from 'react-redux'
-import { getAll } from '../services/api'
+import { getAll, setGeoPosition, setPriceRange } from '../services/api'
 import { Col, Button, Modal } from 'react-bootstrap'
 import { config } from '../config'
 // import { Range } from 'rc-slider'
@@ -36,19 +36,24 @@ class WallContainer extends Component {
 
   componentDidMount () {
     this.close = this.close.bind(this)
-    this.props.getAll()
+    this.props.getAll({})
   }
 
   handleSlider = (vals) => {
-    console.log(this.props.app.geoSearch)
+    console.log(vals[0])
     console.log(vals)
+    this.props.setPriceRange({ minPrice: vals[0], maxPrice: vals[1] })
+    console.log(this.props.search)
+    this.props.getAll(this.props.search)
   }
 
   handleNewAdress = (adress) => {
     if (!adress.location) {
-      this.props.getAll()
+      this.props.getAll({})
     } else {
-      this.props.getAll(adress.location.lat, adress.location.lng)
+      this.props.setGeoPosition({ lat: adress.location.lat, lng: adress.location.lng })
+      this.props.getAll(this.props.search)
+      console.log(this.props.search)
     }
   }
 
@@ -105,13 +110,16 @@ class WallContainer extends Component {
 const mapToProps = (store) => {
   return {
     colocs: store.colocations,
+    search: store.search,
     app: store.app
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAll: getAll(dispatch)
+    getAll: getAll(dispatch),
+    setGeoPosition: setGeoPosition(dispatch),
+    setPriceRange: setPriceRange(dispatch)
   }
 }
 export default connect(mapToProps, mapDispatchToProps)(WallContainer)

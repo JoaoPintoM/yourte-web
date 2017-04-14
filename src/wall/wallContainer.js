@@ -14,6 +14,8 @@ import 'rc-slider/assets/index.css'
 
 class WallContainer extends Component {
 
+  previousSearch = {}
+
   constructor (props) {
     super(props)
 
@@ -36,24 +38,23 @@ class WallContainer extends Component {
 
   componentDidMount () {
     this.close = this.close.bind(this)
-    this.props.getAll({})
   }
 
-  handleSlider = (vals) => {
-    console.log(vals[0])
-    console.log(vals)
-    this.props.setPriceRange({ minPrice: vals[0], maxPrice: vals[1] })
-    console.log(this.props.search)
-    this.props.getAll(this.props.search)
+  componentWillReceiveProps = (nextProps) => {
+    const { search } = nextProps
+
+    if (search && search !== this.previousSearch) {
+      this.previousSearch = search
+      this.props.getAll(search)
+    }
   }
+
+  handleSlider = (vals) =>
+    this.props.setPriceRange({ minPrice: vals[0], maxPrice: vals[1] })
 
   handleNewAdress = (adress) => {
-    if (!adress.location) {
-      this.props.getAll({})
-    } else {
+    if (adress.location) {
       this.props.setGeoPosition({ lat: adress.location.lat, lng: adress.location.lng })
-      this.props.getAll(this.props.search)
-      console.log(this.props.search)
     }
   }
 
@@ -84,7 +85,7 @@ class WallContainer extends Component {
     return (
       <div>
         <h2>Wall</h2>
-          <Range min={0} max={20} defaultValue={[3, 10]} onAfterChange={this.handleSlider}/>
+          <Range min={0} max={1000} defaultValue={[3, 200]} onAfterChange={this.handleSlider}/>
         <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress} />
         <div>
           { this.props.colocs.length > 0 ? colocs : 'Loading' }
@@ -97,6 +98,7 @@ class WallContainer extends Component {
           <Modal.Body>
               <p>{this.state.currentColoc.name}</p>
               <img src={this.state.currentColoc.images[0]} role='presentation' style={imgStyle} />
+              <p>{this.state.currentColoc.description}</p>
           </Modal.Body>
           <Modal.Footer>
            <Button onClick={this.close}>{'Close'}</Button>

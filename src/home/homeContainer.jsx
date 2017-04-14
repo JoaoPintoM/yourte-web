@@ -34,12 +34,16 @@ class HomeContainer extends Component {
     this.props.router.push('/colocswall')
   }
 
+  handleNewAdress = (adress) => {
+    console.log(adress)
+  }
+
   render () {
     const fbUrl = `${config.API}/auth/facebook`
     return (
       <div>
         {' '}{' '}{' '}
-        <GeocodingSearchBox val="cumieira, portugal"/>
+        <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress}/>
         {' '}
         <button onClick={this.open}>{'Je cherche une colocation'}</button>
         <button onClick={this.open}>{'Nous recherchons un colocataire'}</button>

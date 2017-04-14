@@ -14,11 +14,12 @@ export const getAll = (dispatch) => {
       type: 'GET_ALL_START'
     })
 
+    console.log('GET ALL!!')
+
     const { lng, lat, minPrice, maxPrice } = search
-    // const q = { lng, lat }
-    // const q = search
     const params = _(search).omitBy(_.isUndefined).omitBy(_.isNull).value()
 
+    console.log(params)
     axios
       .get(`${config.API}/api/colocations`, {
         headers: {

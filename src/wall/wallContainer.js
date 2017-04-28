@@ -21,6 +21,7 @@ class WallContainer extends Component {
 
     this.state = {
       showModal: false,
+      contactTextValue: 'hellow',
       currentColoc: {
         images: [],
         user: {
@@ -33,6 +34,10 @@ class WallContainer extends Component {
   close () {
     console.log('closing ?')
     this.setState({ showModal: false })
+  }
+
+  handleContactForm = (event) => {
+    console.log(event.target.value)
   }
 
   open (coloc) {
@@ -98,7 +103,11 @@ class WallContainer extends Component {
         <WallModal
           currentColoc={this.state.currentColoc}
           showModal={this.state.showModal}
-          onClose={this.close}>
+          contactTextValue={this.state.contactTextValue}
+          onClose={this.close}
+          onSendFormValue={this.handleContactForm}
+          onChangeContactValue={this.handleContactForm}
+        >
         </WallModal>
       </div>
     )

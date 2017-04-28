@@ -14,8 +14,10 @@ export const WallModal = (props) => {
         <img src={props.currentColoc.images[0]} role='presentation' />
         <p>{props.currentColoc.description}</p>
         <h1>Send Message to {props.currentColoc.user.username}</h1>
-        <textarea></textarea>
-        <button>send</button>
+        <textarea
+          defaultValue={props.contactTextValue}
+          onChange={props.onChangeContactValue}></textarea>
+        <button onClick={props.onSendFormValue}>send</button>
 
       </Modal.Body>
 

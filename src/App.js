@@ -14,9 +14,6 @@ import HeaderComponent from './shared/headerComponent'
 const Outer = (props) => (
   <div className="App">
     <HeaderComponent />
-    <div className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-    </div>
     <div>
       <Links />
       {props.children}

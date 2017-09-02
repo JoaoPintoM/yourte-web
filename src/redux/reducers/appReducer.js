@@ -12,6 +12,8 @@ const appReducer = (state = initialAppState, action) => {
       return { ...state }
     case 'SET_GEOSEARCH':
       return { ...state, geoSearch: action.payload }
+    case 'GET_GEOSEARCH':
+      return { ...state }
     case 'GET_LOCAL_USER':
       return { ...state, localUser: action.payload }
     case 'GET_LOCAL_USER_ERROR':

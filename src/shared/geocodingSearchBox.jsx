@@ -38,9 +38,11 @@ class GeocodingSearchBox extends Component {
             location={new google.maps.LatLng(50.8425412, 4.371714099999963)}
             radius="20" />
 
+        {/* A JSX comment
             <button onClick={() => this._geoSuggest.focus()}>Focus</button>
             <button onClick={() => this._geoSuggest.update('New Zeland')}>Update</button>
             <button onClick={() => this._geoSuggest.clear()}>Clear</button>
+            */}
           <br />
       </div>
     )

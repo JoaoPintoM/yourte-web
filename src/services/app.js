@@ -1,5 +1,12 @@
 import jwtDecode from 'jwt-decode'
 
+export const getCurrentSearch = (dispatch) =>
+  () => {
+    return dispatch({
+      type: 'GET_GEOSEARCH'
+    })
+  }
+
 export const getLocalUser = (dispatch) =>
   () => {
     try {

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { connect } from 'react-redux'
 import { getAll, setGeoPosition, setPriceRange } from '../services/api'
+import { getCurrentSearch } from '../services/app'
 import { contactColocation } from '../services/colocation'
 import { Col, Button, Modal } from 'react-bootstrap'
 import { config } from '../config'
@@ -47,12 +48,12 @@ class WallContainer extends Component {
   }
 
   componentDidMount () {
+    this.props.getCurrentSearch()
     this.close = this.close.bind(this)
   }
 
   componentWillReceiveProps = (nextProps) => {
     const { search } = nextProps
-
     if (search && search !== this.previousSearch) {
       this.previousSearch = search
       this.props.getAll(search)
@@ -125,6 +126,7 @@ const mapToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    getCurrentSearch: getCurrentSearch(dispatch),
     getAll: getAll(dispatch),
     setGeoPosition: setGeoPosition(dispatch),
     setPriceRange: setPriceRange(dispatch)

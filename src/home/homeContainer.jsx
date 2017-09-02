@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, Jumbotron } from 'react-bootstrap'
 import { Link } from 'react-router'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
+import { connect } from 'react-redux'
+import { setGeoPosition } from '../services/api'
 import { config } from '../config'
 // import { Image } from 'cloudinary-react'
 
@@ -35,19 +37,26 @@ class HomeContainer extends Component {
   }
 
   handleNewAdress = (adress) => {
-    console.log(adress)
+    console.log(adress.location)
+    if (adress.location) {
+      this.props.setGeoPosition({ lat: adress.location.lat, lng: adress.location.lng })
+      this.props.router.push('/wall')
+    }
   }
 
   render () {
     const fbUrl = `${config.API}/auth/facebook`
     return (
       <div>
-        {' '}{' '}{' '}
-        <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress}/>
-        {' '}
-        <button onClick={this.open}>{'Je cherche une colocation'}</button>
-        <button onClick={this.open}>{'Nous recherchons un colocataire'}</button>
+        <Jumbotron className='bg'>
+          {' '}{' '}{' '}
+          <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress}/>
+          {' '}
 
+          <button onClick={this.open}>{'Je cherche une colocation'}</button>
+          <button onClick={this.open}>{'Nous recherchons un colocataire'}</button>
+
+        </Jumbotron>
         <br />
         <Link to="/dashboard">{'dashboard'}</Link>
 
@@ -69,4 +78,17 @@ class HomeContainer extends Component {
 
 }
 
-export default HomeContainer
+const mapToProps = (store) => {
+  return {
+    colocs: store.colocations,
+    search: store.search,
+    app: store.app
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setGeoPosition: setGeoPosition(dispatch)
+  }
+}
+export default connect(mapToProps, mapDispatchToProps)(HomeContainer)

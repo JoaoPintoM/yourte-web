@@ -46,3 +46,12 @@ nav a {
   background: #267dc0;
   color: #fff;
 }
+
+
+
+.jumbotron {
+  margin-bottom: 0px;
+  height: 500px;
+  background: url('/img/fondhome.png') no-repeat center center;
+  background-size: cover;
+}

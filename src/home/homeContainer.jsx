@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { connect } from 'react-redux'
 import { setGeoPosition } from '../services/api'
+import { getLocalStorage } from '../services/app'
 import { config } from '../config'
 // import { Image } from 'cloudinary-react'
 
@@ -20,7 +21,15 @@ class HomeContainer extends Component {
   }
 
   componentDidMount () {
+    this.props.getLocalStorage()
     this.setState({ showModal: false })
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    const { app } = nextProps
+    if (app.localstorage) {
+      console.log(app.localstorage)
+    }
   }
 
   close () {
@@ -37,17 +46,27 @@ class HomeContainer extends Component {
   }
 
   handleNewAdress = (adress) => {
-    console.log(adress.location)
     if (adress.location) {
-      this.props.setGeoPosition({ lat: adress.location.lat, lng: adress.location.lng })
+      this.props.setGeoPosition({ label: adress.label, lat: adress.location.lat, lng: adress.location.lng })
       this.props.router.push('/wall')
     }
   }
 
   render () {
     const fbUrl = `${config.API}/auth/facebook`
+
+    const previousSearch = this.props.app.localstorage.map((r) => {
+      console.log(r.label)
+      return (
+        <p>{r.label}</p>
+      )
+    })
     return (
       <div>
+        <div>
+          { this.props.app.localstorage.length > 0 ? previousSearch : 'Loading' }
+        </div>
+
         <Jumbotron className='bg'>
           {' '}{' '}{' '}
           <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress}/>
@@ -88,7 +107,8 @@ const mapToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setGeoPosition: setGeoPosition(dispatch)
+    setGeoPosition: setGeoPosition(dispatch),
+    getLocalStorage: getLocalStorage(dispatch)
   }
 }
 export default connect(mapToProps, mapDispatchToProps)(HomeContainer)

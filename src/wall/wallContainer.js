@@ -3,8 +3,8 @@ import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { connect } from 'react-redux'
 import { getAll, setGeoPosition, setPriceRange } from '../services/api'
 import { getCurrentSearch } from '../services/app'
-import { contactColocation } from '../services/colocation'
-import { Col, Button, Modal } from 'react-bootstrap'
+// import { contactColocation } from '../services/colocation'
+import { Col } from 'react-bootstrap'
 import { config } from '../config'
 import { WallModal } from './dumbs/wallModal'
 
@@ -65,7 +65,7 @@ class WallContainer extends Component {
 
   handleNewAdress = (adress) => {
     if (adress.location) {
-      this.props.setGeoPosition({ lat: adress.location.lat, lng: adress.location.lng })
+      this.props.setGeoPosition({ label: adress.label, lat: adress.location.lat, lng: adress.location.lng })
     }
   }
 

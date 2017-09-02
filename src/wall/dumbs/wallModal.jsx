@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Button, Modal } from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 
 export const WallModal = (props) => {
   return (

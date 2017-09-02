@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import axios from 'axios'
 import { config } from '../config'
+import { setSearchLocalStorage } from './app'
 
 export const setGeoPosition = (dispatch) =>
   (payload) => dispatch({ type: 'SET_GEOPOSITION', payload })
@@ -16,8 +17,10 @@ export const getAll = (dispatch) => {
 
     console.log('GET ALL!!')
 
-    const { lng, lat, minPrice, maxPrice } = search
+    // const { lng, lat, minPrice, maxPrice } = search
     const params = _(search).omitBy(_.isUndefined).omitBy(_.isNull).value()
+
+    setSearchLocalStorage(dispatch, search)
 
     console.log(params)
     axios

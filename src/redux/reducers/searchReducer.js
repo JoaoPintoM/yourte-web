@@ -8,7 +8,7 @@ const searchReducer = (state = initialAppState, action) => {
     case 'INIT_SEARCH':
       return { ...state }
     case 'SET_GEOPOSITION':
-      return { ...state, lng: action.payload.lng, lat: action.payload.lat }
+      return { ...state, lng: action.payload.lng, lat: action.payload.lat, label: action.payload.label }
     case 'SET_PRICE_RANGE':
       return { ...state, minPrice: action.payload.minPrice, maxPrice: action.payload.maxPrice }
     default:

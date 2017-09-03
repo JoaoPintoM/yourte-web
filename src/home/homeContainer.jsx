@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Modal, Jumbotron } from 'react-bootstrap'
+import { Button, Modal, Jumbotron, Col } from 'react-bootstrap'
 import { Link } from 'react-router'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { connect } from 'react-redux'
@@ -36,6 +36,11 @@ class HomeContainer extends Component {
     this.setState({ showModal: false })
   }
 
+  selectPrevious = (previous) => {
+    this.props.setGeoPosition(previous)
+    this.props.router.push('/wall')
+  }
+
   open () {
     this.setState({ showModal: true })
   }
@@ -56,17 +61,15 @@ class HomeContainer extends Component {
     const fbUrl = `${config.API}/auth/facebook`
 
     const previousSearch = this.props.app.localstorage.map((r) => {
-      console.log(r.label)
       return (
-        <p>{r.label}</p>
+        <Col sm={3} key={r.lat} onClick={ this.selectPrevious.bind(this, r)}>
+          <p>{r.label}</p>
+          <p>{'<'} {r.maxPrice}</p>
+        </Col>
       )
     })
     return (
       <div>
-        <div>
-          { this.props.app.localstorage.length > 0 ? previousSearch : 'Loading' }
-        </div>
-
         <Jumbotron className='bg'>
           {' '}{' '}{' '}
           <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress}/>
@@ -78,6 +81,10 @@ class HomeContainer extends Component {
         </Jumbotron>
         <br />
         <Link to="/dashboard">{'dashboard'}</Link>
+
+        <div>
+          { this.props.app.localstorage.length > 0 ? previousSearch : 'Loading' }
+        </div>
 
          <Modal show={this.state.showModal} onHide={this.close}>
            <Modal.Header closeButton>

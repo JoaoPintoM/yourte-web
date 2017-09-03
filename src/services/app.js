@@ -28,7 +28,7 @@ export const setSearchLocalStorage = (dispatch, searchValue) => {
 
   previous.unshift(searchValue)
 
-  if (previous.length > 5) {
+  if (previous.length > 4) {
     previous.pop()
   }
 

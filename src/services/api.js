@@ -45,6 +45,30 @@ export const getAll = (dispatch) => {
   }
 }
 
+export const contactColocation = (dispatch) =>
+  (value) => {
+    axios
+      .post(`${config.API}/api/colocations/${value.colocId}/contact`, value, {
+        headers: {
+          'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+        }
+      })
+      .then((response) => {
+        console.log(response.data)
+
+        // dispatch({
+        //   type: 'COLOCATION_CREATED',
+        //   payload: response.data
+        // })
+      })
+      .catch((error) => {
+        console.log(error)
+        // dispatch({
+        //   type: 'CREATE_COLOC_ERROR'
+        // })
+      })
+  }
+
 export const createColocation = (dispatch) => {
   /**
    * Curruying the function, cad tu donnes les variables

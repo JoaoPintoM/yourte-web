@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { connect } from 'react-redux'
-import { getAll, setGeoPosition, setPriceRange } from '../services/api'
+import { getAll, setGeoPosition, setPriceRange, contactColocation } from '../services/api'
 import { getCurrentSearch } from '../services/app'
-// import { contactColocation } from '../services/colocation'
 import { Col } from 'react-bootstrap'
 import { config } from '../config'
-import { WallModal } from './dumbs/wallModal'
+import WallModal from './dumbs/wallModal'
 
 const Slider = require('rc-slider')
 const createSliderWithTooltip = Slider.createSliderWithTooltip
@@ -42,6 +41,10 @@ class WallContainer extends Component {
     console.log(event.target.value)
   }
 
+  // handleSubmit = (values) => {
+  //   console.log()
+  // }
+
   open (coloc) {
     console.log(coloc)
     this.setState({ showModal: true, currentColoc: coloc })
@@ -67,6 +70,11 @@ class WallContainer extends Component {
     if (adress.location) {
       this.props.setGeoPosition({ label: adress.label, lat: adress.location.lat, lng: adress.location.lng })
     }
+  }
+
+  handleSubmitContact = (values) => {
+    console.log(values)
+    this.props.contactColocation(values)
   }
 
   getImageMedUrl = (image) =>
@@ -108,6 +116,7 @@ class WallContainer extends Component {
           contactTextValue={this.state.contactTextValue}
           onClose={this.close}
           onSendFormValue={this.handleContactForm}
+          onSubmit={this.handleSubmitContact}
           onChangeContactValue={this.handleContactForm}
         >
         </WallModal>
@@ -129,7 +138,8 @@ const mapDispatchToProps = (dispatch) => {
     getCurrentSearch: getCurrentSearch(dispatch),
     getAll: getAll(dispatch),
     setGeoPosition: setGeoPosition(dispatch),
-    setPriceRange: setPriceRange(dispatch)
+    setPriceRange: setPriceRange(dispatch),
+    contactColocation: contactColocation(dispatch)
   }
 }
 export default connect(mapToProps, mapDispatchToProps)(WallContainer)

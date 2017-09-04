@@ -1,7 +1,15 @@
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
+import { Field, reduxForm } from 'redux-form'
 
-export const WallModal = (props) => {
+const data = {  // used to populate "account" reducer when "Load" is clicked
+  firstName: 'Jane'
+}
+
+let WallModal = (props) => {
+  const { handleSubmit } = props
+  data.firstName = props.currentColoc.id
+
   return (
     <Modal show={props.showModal} onHide={props.onClose}>
       <Modal.Header closeButton>
@@ -14,10 +22,32 @@ export const WallModal = (props) => {
         <img src={props.currentColoc.images[0]} role='presentation' />
         <p>{props.currentColoc.description}</p>
         <h1>Send Message to {props.currentColoc.user.username}</h1>
-        <textarea
-          defaultValue={props.contactTextValue}
-          onChange={props.onChangeContactValue}></textarea>
-        <button onClick={props.onSendFormValue}>send</button>
+        <p>{JSON.stringify(props.currentColoc)}</p>
+        <p>{props.currentColoc.id}</p>
+
+        <form onSubmit={handleSubmit}>
+          <div>
+            <Field name="firstName" component="input" type="text" placeholder="First Name"/>
+          </div>
+          <div>
+            <Field name="colocId" component="input" value={props.currentColoc.id} />
+          </div>
+          <input name="toto" defaultValue={props.currentColoc.id}/>
+          <Field name="toto2" component="input" defaultValue={props.currentColoc.id}/>
+          <div>
+            <label htmlFor="name">Colocation Name</label>
+            <Field name="name" component="input" type="text" />
+          </div>
+
+          <div>
+            <label>Longue description</label>
+            <div>
+              <Field name="longdesc" component="textarea"/>
+            </div>
+          </div>
+
+          <button type="submit">Submit</button>
+        </form>
 
       </Modal.Body>
 
@@ -27,3 +57,13 @@ export const WallModal = (props) => {
    </Modal>
   )
 }
+
+WallModal = reduxForm({
+  form: 'contact-modal',
+  enableReinitialize: true,
+  initialValues: {
+    firstName: data.firstName
+  }
+})(WallModal)
+
+export default WallModal

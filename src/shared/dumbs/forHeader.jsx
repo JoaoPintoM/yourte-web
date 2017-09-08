@@ -1,16 +1,17 @@
 import React from 'react'
+import { Nav, NavItem } from 'react-bootstrap'
 
 export const AuthNavHeader = (props) =>
-  <div className='authHeader'>
-    <p>{props.user.username}</p>
-    <img src={props.user.picture} alt={'profile'} className='userFbPicture'/>
-    <p onClick={ props.onDisconnect }>{'disconnect'}</p>
-  </div>
+  <Nav pullRight>
+    {/* <img src={props.user.picture} alt={'profile'} className='userFbPicture'/> */}
+    <NavItem>{props.user.username}</NavItem>
+    <NavItem onClick={ props.onDisconnect }>{'disconnect'}</NavItem>
+  </Nav>
 
 export const NotAuthNavHeader = (props) =>
-  <div className='authHeader'>
-    <a href={props.fbUrl}>{'connexion avec facebook'}</a>
-  </div>
+  <Nav pullRight>
+    <NavItem eventKey={1} href={props.fbUrl}>connexion avec facebook</NavItem>
+  </Nav>
 
 export const AnotherComponent = () =>
   <p>{'AnotherComponent'}</p>

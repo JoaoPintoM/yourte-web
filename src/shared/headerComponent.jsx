@@ -3,6 +3,8 @@ import { getLocalUser, disconnectLocaluser } from '../services/app'
 import { connect } from 'react-redux'
 import { AuthNavHeader, NotAuthNavHeader } from './dumbs/forHeader'
 import { config } from '../config'
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { Link } from 'react-router'
 
 class HeaderComponent extends Component {
 
@@ -21,7 +23,19 @@ class HeaderComponent extends Component {
 
     return (
       <div>
-        {authType}
+        <Navbar>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <Link to="/">
+                <img src="/img/tipi-icon.png" width="35" class="d-inline-block align-top" alt="" />
+              </Link>
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Nav>
+            <NavItem eventKey={1} href="#">Tipi</NavItem>
+          </Nav>
+          {authType}
+        </Navbar>
       </div>
     )
   }

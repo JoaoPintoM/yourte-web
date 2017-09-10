@@ -27,7 +27,7 @@ class HeaderComponent extends Component {
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">
-                <img src="/img/tipi-icon.png" width="35" class="d-inline-block align-top" alt="" />
+                <img src="/img/tipi-icon.png" width="35" className="d-inline-block align-top" alt="" />
               </Link>
             </Navbar.Brand>
           </Navbar.Header>

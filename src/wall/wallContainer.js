@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
+import { FiltersScreenComponent } from '../shared/dumbs/filters'
 import { connect } from 'react-redux'
 import { getAll, setGeoPosition, setPriceRange, contactColocation } from '../services/api'
 import { getCurrentSearch } from '../services/app'
@@ -23,6 +24,11 @@ class WallContainer extends Component {
     this.state = {
       showModal: false,
       contactTextValue: 'hellow',
+      filterChecked: {
+      },
+      filterValues: {
+
+      },
       currentColoc: {
         images: [],
         user: {
@@ -73,8 +79,18 @@ class WallContainer extends Component {
   }
 
   handleSubmitContact = (values) => {
+    console.log('toto')
     console.log(values)
-    this.props.contactColocation(values)
+    // this.props.contactColocation(values)
+  }
+
+  handleFilterClick = (value) => {
+    console.log(value.target.name)
+    this.setState({
+      filterChecked: {
+        [value.target.name]: value.target.checked
+      }
+    })
   }
 
   getImageMedUrl = (image) =>
@@ -106,12 +122,20 @@ class WallContainer extends Component {
         <h2>Wall</h2>
           <Range min={0} max={1000} defaultValue={[3, 850]} onAfterChange={this.handleSlider}/>
         <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress} />
+        {/*
+      <FiltersScreenComponent
+          filterSelected={this.handleFilterClick}
+          filter={this.state.filterChecked}
+        >
+        </FiltersScreenComponent>
+        */}
         <div>
           { this.props.colocs.length > 0 ? colocs : 'Loading' }
         </div>
 
         <WallModal
           currentColoc={this.state.currentColoc}
+          initialValues={{colocId: this.state.currentColoc.id}}
           showModal={this.state.showModal}
           contactTextValue={this.state.contactTextValue}
           onClose={this.close}

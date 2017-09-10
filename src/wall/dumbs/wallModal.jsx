@@ -2,13 +2,8 @@ import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { Field, reduxForm } from 'redux-form'
 
-const data = {  // used to populate "account" reducer when "Load" is clicked
-  firstName: 'Jane'
-}
-
 let WallModal = (props) => {
   const { handleSubmit } = props
-  data.firstName = props.currentColoc.id
 
   return (
     <Modal show={props.showModal} onHide={props.onClose}>
@@ -17,12 +12,13 @@ let WallModal = (props) => {
       </Modal.Header>
 
       <Modal.Body>
-
+{/*
         <p>{props.currentColoc.name}</p>
         <img src={props.currentColoc.images[0]} role='presentation' />
         <p>{props.currentColoc.description}</p>
         <h1>Send Message to {props.currentColoc.user.username}</h1>
         <p>{JSON.stringify(props.currentColoc)}</p>
+*/}
         <p>{props.currentColoc.id}</p>
 
         <form onSubmit={handleSubmit}>
@@ -30,10 +26,12 @@ let WallModal = (props) => {
             <Field name="firstName" component="input" type="text" placeholder="First Name"/>
           </div>
           <div>
-            <Field name="colocId" component="input" value={props.currentColoc.id} />
+            <Field name="colocId" component="input" />
           </div>
           <input name="toto" defaultValue={props.currentColoc.id}/>
-          <Field name="toto2" component="input" defaultValue={props.currentColoc.id}/>
+          {'toto'}
+          {' '}
+          <Field name="toto2" component="input" value={props.currentColoc.id}/>
           <div>
             <label htmlFor="name">Colocation Name</label>
             <Field name="name" component="input" type="text" />
@@ -60,10 +58,10 @@ let WallModal = (props) => {
 
 WallModal = reduxForm({
   form: 'contact-modal',
-  enableReinitialize: true,
-  initialValues: {
-    firstName: data.firstName
-  }
+  enableReinitialize: true
+  // initialValues: {
+  //   firstName: data.firstName
+  // }
 })(WallModal)
 
 export default WallModal

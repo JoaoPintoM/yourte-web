@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 
 let WallModal = (props) => {
   const { handleSubmit } = props
-  console.log(props)
+
   return (
     <Modal show={props.showModal} onHide={props.onClose}>
       <Modal.Header closeButton>
@@ -23,9 +23,14 @@ let WallModal = (props) => {
           </div>
 
           <div>
-            <label>Longue description</label>
+            <label htmlFor="email">Votre Email</label>
+            <Field name="email" component="input" type="email" />
+          </div>
+
+          <div>
+            <label>Message</label>
             <div>
-              <Field name="longdesc" component="textarea"/>
+              <Field name="message" component="textarea"/>
             </div>
           </div>
 

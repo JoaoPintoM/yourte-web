@@ -5,7 +5,8 @@ import { config } from '../config'
 export const contactColocation = (dispatch) => {
   return (contactInfo) => {
     axios
-      .post(`${config.API}api/colocations/${contactInfo.colocationId}/contact`, contactInfo.message, {
+      .post(`${config.API}api/colocations/${contactInfo.colocationId}/contact`,
+        { email: contactInfo.email, message: contactInfo.message }, {
         headers: {
           'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         }

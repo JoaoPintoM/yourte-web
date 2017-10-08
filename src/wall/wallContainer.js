@@ -79,9 +79,11 @@ class WallContainer extends Component {
   }
 
   handleSubmitContact = (values) => {
-    console.log('toto')
-    console.log(values)
-    // this.props.contactColocation(values)
+    if (!values.message) return;
+    if (!values.email) return;
+
+    this.props.contactColocation(values)
+    this.setState({ showModal: false })
   }
 
   handleFilterClick = (value) => {

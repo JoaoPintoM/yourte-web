@@ -4,6 +4,7 @@ import { Form, FormGroup, Col, Checkbox } from 'react-bootstrap'
 export const FiltersScreenComponent = (props) =>
   <div>
     <Form horizontal>
+{/*
       <FormGroup>
         {'Ages'}
           <Checkbox
@@ -19,15 +20,15 @@ export const FiltersScreenComponent = (props) =>
           <Checkbox>{'30 - 35 ans'}</Checkbox>
           <Checkbox>{'35 ans - +'}</Checkbox>
       </FormGroup>
-
+*/}
       <FormGroup>
         {'Activité'}
-          <Checkbox>{'Etudiant'}</Checkbox>
-          <Checkbox>{'Salarié'}</Checkbox>
-          <Checkbox>{'Indépendant'}</Checkbox>
-          <Checkbox>{'Autres'}</Checkbox>
+          <Checkbox onChange={props.filterSelected} value="student" name="student">{'Etudiant'}</Checkbox>
+          <Checkbox onChange={props.filterSelected} value="employe" name="employe">{'Salarié'}</Checkbox>
+          <Checkbox onChange={props.filterSelected} value="independant" name="independant">{'Indépendant'}</Checkbox>
+          <Checkbox onChange={props.filterSelected} value="otherActivity" name="otherActivity">{'Autres'}</Checkbox>
       </FormGroup>
-
+{/*
       <FormGroup>
         {'Toto'}
           <Checkbox>{'toto'}</Checkbox>
@@ -35,6 +36,6 @@ export const FiltersScreenComponent = (props) =>
           <Checkbox>{'toto'}</Checkbox>
           <Checkbox>{'toto'}</Checkbox>
       </FormGroup>
-
+*/}
     </Form>
   </div>

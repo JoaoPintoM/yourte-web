@@ -11,6 +11,8 @@ const searchReducer = (state = initialAppState, action) => {
       return { ...state, lng: action.payload.lng, lat: action.payload.lat, label: action.payload.label }
     case 'SET_PRICE_RANGE':
       return { ...state, minPrice: action.payload.minPrice, maxPrice: action.payload.maxPrice }
+    case 'SET_FILTERS':
+      return { ...state, filters: action.payload.filters }
     default:
       return state
   }

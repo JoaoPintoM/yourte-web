@@ -2,12 +2,16 @@ import _ from 'lodash'
 import axios from 'axios'
 import { config } from '../config'
 import { setSearchLocalStorage } from './app'
+var qs = require('qs');
 
 export const setGeoPosition = (dispatch) =>
   (payload) => dispatch({ type: 'SET_GEOPOSITION', payload })
 
 export const setPriceRange = (dispatch) =>
   (payload) => dispatch({ type: 'SET_PRICE_RANGE', payload })
+
+export const setFilters = (dispatch) =>
+  (payload) => dispatch({ type: 'SET_FILTERS', payload })
 
 export const getAll = (dispatch) => {
   return (search) => {
@@ -16,6 +20,7 @@ export const getAll = (dispatch) => {
     })
 
     console.log('GET ALL!!')
+    console.log(search)
 
     // const { lng, lat, minPrice, maxPrice } = search
     const params = _(search).omitBy(_.isUndefined).omitBy(_.isNull).value()
@@ -28,7 +33,10 @@ export const getAll = (dispatch) => {
         headers: {
           'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         },
-        params
+        params,
+        'paramsSerializer': function(params) {
+          return qs.stringify(params, {arrayFormat: 'repeat'})
+        }
       })
       .then((response) => {
         dispatch({

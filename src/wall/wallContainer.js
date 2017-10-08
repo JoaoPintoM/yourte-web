@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { FiltersScreenComponent } from '../shared/dumbs/filters'
 import { connect } from 'react-redux'
-import { getAll, setGeoPosition, setPriceRange, contactColocation } from '../services/api'
+import { getAll, setGeoPosition, setPriceRange, setFilters, contactColocation } from '../services/api'
 import { getCurrentSearch } from '../services/app'
 import { Col } from 'react-bootstrap'
 import { config } from '../config'
@@ -86,13 +86,23 @@ class WallContainer extends Component {
     this.setState({ showModal: false })
   }
 
+  filters = [];
   handleFilterClick = (value) => {
-    console.log(value.target.name)
     this.setState({
       filterChecked: {
         [value.target.name]: value.target.checked
       }
     })
+
+    const index = this.filters.indexOf(value.target.name)
+    if (index === -1) {
+      this.filters.push(value.target.name)
+    } else {
+      this.filters.splice(index, 1);
+    }
+
+    console.log(this.filters);
+    this.props.setFilters({ filters: this.filters });
   }
 
   getImageMedUrl = (image) =>
@@ -124,13 +134,12 @@ class WallContainer extends Component {
         <h2>Wall</h2>
           <Range min={0} max={1000} defaultValue={[3, 850]} onAfterChange={this.handleSlider}/>
         <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress} />
-        {/*
-      <FiltersScreenComponent
+
+        <FiltersScreenComponent
           filterSelected={this.handleFilterClick}
-          filter={this.state.filterChecked}
-        >
+          filter={this.state.filterChecked}>
         </FiltersScreenComponent>
-        */}
+
         <div>
           { this.props.colocs.length > 0 ? colocs : 'Loading' }
         </div>
@@ -165,6 +174,7 @@ const mapDispatchToProps = (dispatch) => {
     getAll: getAll(dispatch),
     setGeoPosition: setGeoPosition(dispatch),
     setPriceRange: setPriceRange(dispatch),
+    setFilters: setFilters(dispatch),
     contactColocation: contactColocation(dispatch)
   }
 }

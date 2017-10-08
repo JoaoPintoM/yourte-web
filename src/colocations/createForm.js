@@ -3,15 +3,16 @@ import { Field, reduxForm } from 'redux-form'
 import { Alert } from 'react-bootstrap'
 import UploadComponent from '../shared/uploadComponent'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
+import { FiltersScreenComponent } from '../shared/dumbs/filters'
 
 class CreateForm extends Component {
 
   handleNewAdress = (adress) => this.props.onAdressSet(adress)
   handleImagesUploaded = (images) => this.props.onNewImages(images)
+  handleFilterClick = (value) => this.props.filterSelected(value)
 
   render () {
-    console.log('fuck mani')
-    const { handleSubmit, errorMessage } = this.props
+    const { handleSubmit, errorMessage, handleFilterClick, filterChecked } = this.props
     console.log(errorMessage)
     const oioi = () => {
       console.log('in oioi')
@@ -31,6 +32,12 @@ class CreateForm extends Component {
         <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress} />
         <UploadComponent onNewImages={this.handleImagesUploaded} />
 
+        <h2>{'Ajouter des filtres'}</h2>
+        <FiltersScreenComponent
+          filterSelected={this.handleFilterClick}>
+        </FiltersScreenComponent>
+
+        
        <form onSubmit={handleSubmit}>
          <div>
            <label htmlFor="name">Colocation Name</label>
@@ -44,6 +51,7 @@ class CreateForm extends Component {
            <label htmlFor="description">Description courte</label>
            <Field name="description" component="input" type="text"/>
          </div>
+
           <div>
             <label>Longue description</label>
             <div>

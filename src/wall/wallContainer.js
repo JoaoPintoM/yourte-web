@@ -22,6 +22,7 @@ class WallContainer extends Component {
     super(props)
 
     this.state = {
+      visibilityFilters: false,
       showModal: false,
       contactTextValue: 'hellow',
       filterChecked: {
@@ -34,7 +35,9 @@ class WallContainer extends Component {
         user: {
           username: 'anonymous'
         }
-      }
+      },
+      minPrice: 0,
+      maxPrice: 850
     }
   }
 
@@ -69,8 +72,11 @@ class WallContainer extends Component {
     }
   }
 
-  handleSlider = (vals) =>
+  handleSlider = (vals) => {
+    this.setState({ minPrice: vals[0], maxPrice: vals[1] })
     this.props.setPriceRange({ minPrice: vals[0], maxPrice: vals[1] })
+  }
+
 
   handleNewAdress = (adress) => {
     if (adress.location) {
@@ -84,6 +90,11 @@ class WallContainer extends Component {
 
     this.props.contactColocation(values)
     this.setState({ showModal: false })
+  }
+
+  handleVisibilityFilters = () => {
+    this.setState({ visibilityFilters: !this.state.visibilityFilters })
+    console.log(this.state.visibilityFilters)
   }
 
   filters = [];
@@ -109,39 +120,70 @@ class WallContainer extends Component {
     `${config.IMAGES_URL}${config.IMG_MED_SCALE}/${image}${config.JPG}`
 
   render () {
+    const truncateString = (s) => {
+      if (s.length < 40) return s
+      return `${s.substring(0, 40)}...`
+    }
     const userImgStyle = { width: '60px' }
     const imgStyle = { width: '250px' }
     const colocs = this.props.colocs.map((r) => {
       return (
-        <Col sm={6} md={3} key={r.id} onClick={ this.open.bind(this, r) }>
-          <p>{r.name} - {r.price} €</p>
-          <img src={this.getImageMedUrl(r.images[0])} role='presentation' style={imgStyle} />
-          <br />
+        <Col className='wallVignette' sm={6} md={4} key={r.id} onClick={ this.open.bind(this, r) }>
+
+          <div className="imgContainer">
+            <img className='image' src={this.getImageMedUrl(r.images[0])} role='presentation' />
+            <div className="middle">
+              <div className="text">{r.adress}</div>
+            </div>
+          </div>
+          <p className='vigTitle'>[{r.price} €] {r.name}</p>
+
+          <span>{truncateString(r.adress)}</span>
+          {/*
           <span>Situé à: </span>
           <span>{' - '}{r.adress}</span>
           <br />
-          <span>Posté par: {r.user.username}</span>
-          <br/>
+
+          <p className='vigUser'>{r.user.username}</p>
+          */}
           <img src={r.user.picture} role='presentation' style={userImgStyle} />
-          <br/>
-          <br/>
-          <br/>
         </Col>
       )
     })
+
+    let filtersScreen = null;
+     if (this.state.visibilityFilters) {
+       filtersScreen = (<FiltersScreenComponent
+         filterSelected={this.handleFilterClick}
+         filter={this.state.filterChecked}>
+       </FiltersScreenComponent>)
+     } else {
+       filtersScreen = null
+     }
+
     return (
       <div>
-        <h2>Wall</h2>
-          <Range min={0} max={1000} defaultValue={[3, 850]} onAfterChange={this.handleSlider}/>
-        <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress} />
+        <div className='geocodingWallSection'>
+          {/*<span className='searchIcon'><i className="fa fa-map-marker"></i></span>*/}
+          <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress} />
+        </div>
+        <div>
+          <Col md={2}>
+            <p>Budget: Entre {this.state.minPrice} et {this.state.maxPrice}</p>
+          </Col>
+          <Col md={10}>
+            <Range min={0} max={1000} defaultValue={[0, 850]} onAfterChange={this.handleSlider}/>
+          </Col>
+        </div>
 
-        <FiltersScreenComponent
-          filterSelected={this.handleFilterClick}
-          filter={this.state.filterChecked}>
-        </FiltersScreenComponent>
+        <br />
+        <div className='buttonFiltersSection'>
+          <button onClick={ this.handleVisibilityFilters }>{'Filtres supplementaires'}</button>
+        </div>
+        {filtersScreen}
 
         <div>
-          { this.props.colocs.length > 0 ? colocs : 'Loading' }
+          { this.props.colocs.length > 0 ? colocs : 'Pas de résultats..' }
         </div>
 
         <WallModal

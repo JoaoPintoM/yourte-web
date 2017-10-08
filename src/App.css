@@ -54,3 +54,122 @@ nav a {
   background: url('/img/fondhome.png') no-repeat center center;
   background-size: cover;
 }
+
+.jumboCenter {
+  margin-top: 15%;
+}
+
+.jumboCenter ul {
+  margin: auto;
+
+}
+.geosuggest__input {
+  padding: 15px;
+  width: 50%;
+  max-width: 400px;
+}
+
+.geosuggest__suggests {
+  background: white;
+  width: 50%;
+  max-width: 400px;
+}
+.geosuggest__item{
+
+}
+ul.geosuggest__suggests {
+  padding-left: 0px;
+}
+li.geosuggest__item {
+  list-style-type: none;
+  padding: 5px;
+}
+li.geosuggest__item:hover {
+  cursor: pointer;
+  background-color: #4caf50;
+}
+
+.geocodingWallSection {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.geocodingWallSection ul {
+  background-color: white;
+  position: absolute;
+  z-index: 9999;
+  -webkit-box-shadow: 2px 2px 12px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 2px 12px -5px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 12px -5px rgba(0,0,0,0.75);
+}
+
+
+.buttonFiltersSection{
+  padding: 0px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.wallVignette {
+  /*background-color: red;*/
+  padding: 0px 3px !important;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.wallVignette:hover {
+  cursor: pointer;
+}
+
+.wallVignette img {
+  width: 100%;
+}
+
+.wallVignette .vigTitle {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.wallVignette .vigUser {
+  text-align: right;
+}
+
+
+
+.imgContainer {
+  position: relative;
+}
+
+.imgContainer .image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.imgContainer .middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.imgContainer:hover .image {
+  opacity: 0.3;
+}
+
+.imgContainer:hover .middle {
+  opacity: 1;
+}
+
+.imgContainer .text {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}

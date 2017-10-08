@@ -15,7 +15,7 @@ const Outer = (props) => (
   <div className="App">
     <HeaderComponent />
     <div>
-      <Links />
+      {/*<Links />*/}
       {props.children}
     </div>
   </div>
@@ -42,7 +42,7 @@ const Links = () =>
     // <Link to="/colocation">coloc</Link>
     }
     <Link to="/wall">wall</Link>
-    // <Link to="/colocswall">colocsWall</Link>
+     <Link to="/colocswall">colocsWall</Link>
     <Link to="/colocations/create">create</Link>
   </nav>
 

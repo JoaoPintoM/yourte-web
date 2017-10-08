@@ -1,7 +1,7 @@
 const initialAppState = {
   geoSearch: {
-    label: 'Bruxelles, Belgique',
-    location: {lat: 50.8503396, lng: 4.351710300000036}
+    // label: 'Bruxelles, Belgique',
+    // location: {lat: 50.8503396, lng: 4.351710300000036}
   },
   localUser: { isAuth: 'pikachu' },
   localstorage: []

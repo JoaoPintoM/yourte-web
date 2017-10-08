@@ -20,17 +20,16 @@ class GeocodingSearchBox extends Component {
 
   render () {
     var fixtures = [
-      {label: 'Old Elbe Tunnel, Hamburg', location: {lat: 53.5459, lng: 9.966576}},
-      {label: 'Reeperbahn, Hamburg', location: {lat: 53.5495629, lng: 9.9625838}},
-      {label: 'Alster, Hamburg', location: {lat: 53.5610398, lng: 10.0259135}}
+      {label: 'Bruxelles, Belgique', location: {lat: 50.8503396, lng: 4.351710300000036}},
+      {label: 'Louvain-la-Neuve, Ottignies, Belgique', location: {lat: 50.66808100000001, lng: 4.611832400000026}},
+      {label: 'Namur, Belgique', location: {lat: 48.862725, lng: 2.287592000000018}}
     ]
 
     return (
       <div>
-        <h3>{'Search Box'}</h3>
         <Geosuggest
             ref={ el => this._geoSuggest = el }
-            placeholder="Start typing!"
+            placeholder="Où cherchez vous (ville, rue numéro, ...)"
             initialValue={this.props.app.geoSearch.label}
             fixtures={fixtures}
             country='be'

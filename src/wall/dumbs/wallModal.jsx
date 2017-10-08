@@ -4,34 +4,19 @@ import { Field, reduxForm } from 'redux-form'
 
 let WallModal = (props) => {
   const { handleSubmit } = props
-
+  console.log(props)
   return (
     <Modal show={props.showModal} onHide={props.onClose}>
       <Modal.Header closeButton>
-        <Modal.Title>{'info'}</Modal.Title>
+        <Modal.Title>{'Contact colocation'}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-{/*
-        <p>{props.currentColoc.name}</p>
-        <img src={props.currentColoc.images[0]} role='presentation' />
-        <p>{props.currentColoc.description}</p>
-        <h1>Send Message to {props.currentColoc.user.username}</h1>
-        <p>{JSON.stringify(props.currentColoc)}</p>
-*/}
-        <p>{props.currentColoc.id}</p>
-
         <form onSubmit={handleSubmit}>
           <div>
-            <Field name="firstName" component="input" type="text" placeholder="First Name"/>
+            <Field name="colocId" component="input" type="hidden"/>
           </div>
-          <div>
-            <Field name="colocId" component="input" />
-          </div>
-          <input name="toto" defaultValue={props.currentColoc.id}/>
-          {'toto'}
-          {' '}
-          <Field name="toto2" component="input" value={props.currentColoc.id}/>
+
           <div>
             <label htmlFor="name">Colocation Name</label>
             <Field name="name" component="input" type="text" />

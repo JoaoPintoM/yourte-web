@@ -135,7 +135,7 @@ class WallContainer extends Component {
 
         <WallModal
           currentColoc={this.state.currentColoc}
-          initialValues={{colocId: this.state.currentColoc.id}}
+          initialValues={{ colocId: this.state.currentColoc.id }}
           showModal={this.state.showModal}
           contactTextValue={this.state.contactTextValue}
           onClose={this.close}

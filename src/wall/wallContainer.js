@@ -128,7 +128,7 @@ class WallContainer extends Component {
     const imgStyle = { width: '250px' }
     const colocs = this.props.colocs.map((r) => {
       return (
-        <Col className='wallVignette' sm={6} md={4} key={r.id} onClick={ this.open.bind(this, r) }>
+        <Col className='wallVignette' sm={6} md={4} lg={3} key={r.id} onClick={ this.open.bind(this, r) }>
 
           <div className="imgContainer">
             <img className='image' src={this.getImageMedUrl(r.images[0])} role='presentation' />

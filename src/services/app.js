@@ -17,9 +17,9 @@ export const getLocalStorage = (dispatch) =>
   }
 
 export const setSearchLocalStorage = (dispatch, searchValue) => {
-  console.log('setSearchLocalStorage')
+  if(!searchValue.label) return
   let previous = localStorage.getItem('x-search')
-  console.log(previous)
+  searchValue.key = Math.random()
   if (!previous) {
     previous = []
   } else {

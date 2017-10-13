@@ -62,7 +62,7 @@ class HomeContainer extends Component {
 
     const previousSearch = this.props.app.localstorage.map((r) => {
       return (
-        <Col sm={3} key={r.lat} onClick={ this.selectPrevious.bind(this, r)}>
+        <Col sm={3} key={r.key} onClick={ this.selectPrevious.bind(this, r)}>
           <p>{r.label}</p>
           <p>{'<'} {r.maxPrice}</p>
         </Col>

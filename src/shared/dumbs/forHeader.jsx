@@ -1,10 +1,12 @@
 import React from 'react'
 import { Nav, NavItem } from 'react-bootstrap'
+import { Link } from 'react-router'
 
 export const AuthNavHeader = (props) =>
   <Nav pullRight>
     {/* <img src={props.user.picture} alt={'profile'} className='userFbPicture'/> */}
     <NavItem>{props.user.username}</NavItem>
+    <NavItem><Link to="/colocations/create">create</Link></NavItem>
     <NavItem onClick={ props.onDisconnect }>{'disconnect'}</NavItem>
   </Nav>
 

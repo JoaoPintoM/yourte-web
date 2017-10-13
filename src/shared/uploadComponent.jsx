@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Dropzone from 'react-dropzone'
 import request from 'superagent'
 import { config } from '../config'
+import { ProgressBar } from 'react-bootstrap'
 
 const CLOUDINARY_UPLOAD_PRESET = 'teststagounet'
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/stagounet/upload'
@@ -48,27 +49,36 @@ class UploadComponent extends Component {
 
   render () {
     const imgList = this.state.uploadedFiles.map((f) => {
-      return <img key={f.name} role="presentation" src={f.preview} style={{width: '150px'}}/>
+      return (
+        <img key={f.name} role="presentation" src={f.preview} style={{width: '150px'}}/>
+      )
     })
 
     const uploadedList = this.state.uploadedUrls.map((u) =>
       <img key={u} role="presentation" src={this.getImageMedUrl(u)} style={{width: '200px'}}/>
     )
 
+    const dropZoneStyle = {
+      background: '#f7fbf7',
+      width: '400px',
+      padding: '25px',
+      border: '1px dashed black',
+      cusor: 'pointer'
+    }
+
     return (
       <form>
         <div className="FileUpload">
           <Dropzone
             onDrop={this.onImageDrop.bind(this)}
-            accept="image/*">
-            <div>Drop an image or click to select a file to upload.</div>
+            accept="image/*"
+            style={dropZoneStyle}>
+            <div>{'deposez ici vos images ou cliquez pour rechercher'}</div>
           </Dropzone>
           <br />
         </div>
 
         <div>{imgList}</div>
-
-        <h1>{'uploaded:'}</h1>
         <div>{uploadedList}</div>
       </form>
     )

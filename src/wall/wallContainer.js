@@ -133,7 +133,7 @@ class WallContainer extends Component {
           <div className="imgContainer">
             <img className='image' src={this.getImageMedUrl(r.images[0])} role='presentation' />
             <div className="middle">
-              <div className="text">{r.adress}</div>
+              <div className="text">{r.description}</div>
             </div>
           </div>
           <p className='vigTitle'>[{r.price} €] {r.name}</p>

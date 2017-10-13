@@ -64,6 +64,8 @@ class CreateForm extends Component {
 
           <p>{'Votre adresse'}</p>
           <GeocodingSearchBox val="cumieira, portugal" placeholder="L'adresse de votre colocation.." onAdressSet={this.handleNewAdress} />
+
+          <p>{'Uploadez vos photos'}</p>
           <UploadComponent onNewImages={this.handleImagesUploaded} />
 
           <h2>{'Ajouter des filtres'}</h2>
@@ -71,8 +73,8 @@ class CreateForm extends Component {
             filterSelected={this.handleFilterClick}>
           </FiltersScreenComponent>
 
-
-         <button type="submit">Submit</button>
+        <br />
+         <button className="btn btn-default" type="submit">{'Valider colocation'}</button>
        </form>
      </div>
       )

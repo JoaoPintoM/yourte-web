@@ -190,3 +190,17 @@ li.geosuggest__item:hover {
   max-width: 400px;
   margin-bottom: 20px;
 }
+
+.checkbox-inline {
+  padding-left: 0px !important;
+  margin-right: 15px !important;
+}
+
+.filterGroupName {
+  margin-bottom: 25px;
+}
+
+.filterNameGroup {
+  margin-bottom: -5px;
+  font-weight: bold;
+}

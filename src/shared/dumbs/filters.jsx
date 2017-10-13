@@ -5,7 +5,7 @@ export const FiltersScreenComponent = (props) =>
   <div>
     <Form horizontal className="filtersSection">
 {/*
-      <FormGroup>
+      <FormGroup className="filterGroupName">
         {'Ages'}
           <label className="checkbox-inline"><Checkbox</label>
             onChange={props.filterSelected} value="18 - 25" name="18"
@@ -21,16 +21,16 @@ export const FiltersScreenComponent = (props) =>
           <label className="checkbox-inline"><Checkbox>{'35 ans - +'}</Checkbox></label>
       </FormGroup>
 */}
-      <FormGroup>
-        {'Activité'}
+      <FormGroup className="filterGroupName">
+        <p className="filterNameGroup">{'Activité'}</p>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="student" name="student">{'Etudiant'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="employe" name="employe">{'Salarié'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="independant" name="independant">{'Indépendant'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="otherActivity" name="otherActivity">{'Autres'}</Checkbox></label>
       </FormGroup>
 
-      <FormGroup>
-        {'Secteurs'}
+      <FormGroup className="filterGroupName">
+        <p className="filterNameGroup">{'Secteurs'}</p>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="it" name="it">{'Informatique'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="marketing" name="marketing">{'Marketing'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="architecture" name="architecture">{'Architecture'}</Checkbox></label>
@@ -41,8 +41,8 @@ export const FiltersScreenComponent = (props) =>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="otherSecteurs" name="otherSecteurs">{'Autres'}</Checkbox></label>
       </FormGroup>
 
-      <FormGroup>
-        {'Langues'}
+      <FormGroup className="filterGroupName">
+        <p className="filterNameGroup">{'Langues'}</p>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="french" name="french">{'Français'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="english" name="english">{'Anglais'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="spanish" name="spanish">{'Espagnol'}</Checkbox></label>
@@ -53,8 +53,8 @@ export const FiltersScreenComponent = (props) =>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="otherLanguage" name="otherLanguage">{'Autres'}</Checkbox></label>
       </FormGroup>
 
-      <FormGroup>
-        {'Loisirs'}
+      <FormGroup className="filterGroupName">
+        <p className="filterNameGroup">{'Loisirs'}</p>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="sports" name="sports">{'Sports'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="cinema" name="cinema">{'Cinéma / Théatre'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="artculture" name="artculture">{'Art / Culture'}</Checkbox></label>
@@ -65,8 +65,8 @@ export const FiltersScreenComponent = (props) =>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="otherFun" name="otherFun">{'Autres'}</Checkbox></label>
       </FormGroup>
 
-      <FormGroup className="checkbox-inline">
-        {'Sports'}
+      <FormGroup className="filterGroupName">
+        <p className="filterNameGroup">{'Sports'}</p>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="running" name="running">{'Running'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="football" name="football">{'Foot'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="tennis" name="tennis">{'Tennis'}</Checkbox></label>
@@ -77,8 +77,8 @@ export const FiltersScreenComponent = (props) =>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="otherSports" name="otherSports">{'Autres'}</Checkbox></label>
       </FormGroup>
 
-      <FormGroup>
-        {'Equipement'}
+      <FormGroup className="filterGroupName">
+        <p className="filterNameGroup">{'Equipement'}</p>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="wifi" name="wifi">{'Wi-FI'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="tv" name="tv">{'Télévision'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="equipedkitchen" name="equipedkitchen">{'Cuisine équipée'}</Checkbox></label>
@@ -89,8 +89,8 @@ export const FiltersScreenComponent = (props) =>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="otherEquipement" name="otherEquipement">{'Autres'}</Checkbox></label>
       </FormGroup>
 
-      <FormGroup>
-        {'Musique'}
+      <FormGroup className="filterGroupName">
+        <p className="filterNameGroup">{'Musique'}</p>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="pop" name="pop">{'Pop'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="electro" name="electro">{'Electro'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="indie" name="indie">{'Indie'}</Checkbox></label>
@@ -101,7 +101,7 @@ export const FiltersScreenComponent = (props) =>
           <label className="checkbox-inline"><Checkbox onChange={props.filterSelected} value="otherMusic" name="otherMusic">{'Autres'}</Checkbox></label>
       </FormGroup>
 {/*
-      <FormGroup>
+      <FormGroup className="filterGroupName">
         {'Toto'}
           <label className="checkbox-inline"><Checkbox>{'toto'}</Checkbox></label>
           <label className="checkbox-inline"><Checkbox>{'toto'}</Checkbox></label>

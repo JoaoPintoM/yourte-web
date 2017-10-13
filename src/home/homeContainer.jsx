@@ -83,7 +83,6 @@ class HomeContainer extends Component {
           */}
         </Jumbotron>
         <br />
-        <Link to="/dashboard">{'dashboard'}</Link>
 
         <div>
           { this.props.app.localstorage.length > 0 ? previousSearch : 'Loading' }

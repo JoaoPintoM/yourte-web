@@ -21,7 +21,11 @@ const Outer = (props) => (
   </div>
 )
 // const Home = () => <HomeContainer><HomeContainer/>;
-const About = () => <div><h1>About</h1></div>
+const About = () => (
+  <div>
+    <h4>{'Vous devez vous connecter pour pouvoir utiliser notre service Tipi'}</h4>
+  </div>
+)
 const Contact = () => <div><h1>Contact</h1></div>
 
 const isAuth = (nextState, replace, callback) => {

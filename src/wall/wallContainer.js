@@ -162,7 +162,7 @@ class WallContainer extends Component {
      }
 
     return (
-      <div>
+      <div className="marginTop10">
         <div className='geocodingWallSection'>
           {/*<span className='searchIcon'><i className="fa fa-map-marker"></i></span>*/}
           <GeocodingSearchBox val="cumieira, portugal" placeholder="Où cherchez vous (ville, rue numéro, ...)" onAdressSet={this.handleNewAdress} />

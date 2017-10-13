@@ -40,7 +40,7 @@ class CreationPage extends Component {
 
   render = () => {
     return (
-      <div>
+      <div className="marginTop30">
         <CreateForm
           filterSelected={this.handleFilterClick}
           filter={this.state.filterChecked}

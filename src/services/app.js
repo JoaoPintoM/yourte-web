@@ -26,6 +26,10 @@ export const setSearchLocalStorage = (dispatch, searchValue) => {
     previous = JSON.parse(previous)
   }
 
+  console.log(searchValue.label)
+  const findPreviousLabel = previous.find(x => (x.label === searchValue.label))
+  if (findPreviousLabel) return;
+
   previous.unshift(searchValue)
 
   if (previous.length > 4) {

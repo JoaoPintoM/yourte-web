@@ -165,7 +165,7 @@ class WallContainer extends Component {
       <div>
         <div className='geocodingWallSection'>
           {/*<span className='searchIcon'><i className="fa fa-map-marker"></i></span>*/}
-          <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress} />
+          <GeocodingSearchBox val="cumieira, portugal" placeholder="Où cherchez vous (ville, rue numéro, ...)" onAdressSet={this.handleNewAdress} />
         </div>
         <div>
           <Col md={2}>

@@ -27,37 +27,51 @@ class CreateForm extends Component {
       )
     }
     return (
-      <div>
-        {oioi}
-        <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress} />
-        <UploadComponent onNewImages={this.handleImagesUploaded} />
+      <div className="container">
+       <form onSubmit={handleSubmit} className="formCreate">
 
-        <h2>{'Ajouter des filtres'}</h2>
-        <FiltersScreenComponent
-          filterSelected={this.handleFilterClick}>
-        </FiltersScreenComponent>
+       <div className="row">
+        <div className="col-md-6">
+         <div>
+           <p>{'Nom de votre colocation'}</p>
+           <Field name="name" component="input" type="text" className="jInput" placeholder="Maison du bonheur"/>
+         </div>
+         <div>
+           <p>{'Loyer mensuel'}</p>
+           <Field name="price" component="input" type="number" className="jInput" placeholder="450 euros"/>
+         </div>
 
-        
-       <form onSubmit={handleSubmit}>
-         <div>
-           <label htmlFor="name">Colocation Name</label>
-           <Field name="name" component="input" type="text" />
          </div>
+
+         <div className="col-md-6">
          <div>
-           <label htmlFor="price">Loyer</label>
-           <Field name="price" component="input" type="number"/>
+           <p>{'Description courte'}</p>
+           <Field name="description" component="input" type="text" className="jInput" placeholder="4 chambres et ensoleillé"/>
          </div>
-         <div>
-           <label htmlFor="description">Description courte</label>
-           <Field name="description" component="input" type="text"/>
-         </div>
+
 
           <div>
-            <label>Longue description</label>
             <div>
-              <Field name="longdesc" component="textarea"/>
+              <p>{'Description Longue'}</p>
+              <Field name="longdesc" component="textarea"  className="jInput" rows="3"/>
             </div>
           </div>
+
+          </div>
+
+          </div>
+
+
+          <p>{'Votre adresse'}</p>
+          <GeocodingSearchBox val="cumieira, portugal" placeholder="L'adresse de votre colocation.." onAdressSet={this.handleNewAdress} />
+          <UploadComponent onNewImages={this.handleImagesUploaded} />
+
+          <h2>{'Ajouter des filtres'}</h2>
+          <FiltersScreenComponent
+            filterSelected={this.handleFilterClick}>
+          </FiltersScreenComponent>
+
+
          <button type="submit">Submit</button>
        </form>
      </div>

@@ -29,7 +29,7 @@ class GeocodingSearchBox extends Component {
       <div>
         <Geosuggest
             ref={ el => this._geoSuggest = el }
-            placeholder="Où cherchez vous (ville, rue numéro, ...)"
+            placeholder={this.props.placeholder}
             initialValue={this.props.app.geoSearch.label}
             fixtures={fixtures}
             country='be'

@@ -73,7 +73,7 @@ class HomeContainer extends Component {
         <Jumbotron className='bg'>
           {' '}{' '}{' '}
           <div className='jumboCenter'>
-          <GeocodingSearchBox val="cumieira, portugal" onAdressSet={this.handleNewAdress}/>
+          <GeocodingSearchBox val="cumieira, portugal" placeholder="Où cherchez vous (ville, rue numéro, ...)" onAdressSet={this.handleNewAdress}/>
           </div>
           {' '}
 

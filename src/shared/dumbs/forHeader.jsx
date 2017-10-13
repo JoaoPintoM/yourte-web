@@ -6,7 +6,7 @@ export const AuthNavHeader = (props) =>
   <Nav pullRight>
     {/* <img src={props.user.picture} alt={'profile'} className='userFbPicture'/> */}
     <NavItem>{props.user.username}</NavItem>
-    <NavItem><Link to="/colocations/create">create</Link></NavItem>
+    <NavItem><Link to="/colocations/create">Ajouter</Link></NavItem>
     <NavItem onClick={ props.onDisconnect }>{'disconnect'}</NavItem>
   </Nav>
 

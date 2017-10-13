@@ -179,3 +179,14 @@ li.geosuggest__item:hover {
     text-align: left;
     padding-left: 40px;
 }
+
+.formCreate {
+  text-align: left;
+}
+
+.jInput {
+  padding: 15px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}

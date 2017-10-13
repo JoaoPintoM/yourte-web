@@ -32,7 +32,9 @@ class HeaderComponent extends Component {
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
-            <NavItem eventKey={1} href="#">Tipi</NavItem>
+        
+            <NavItem><Link to="/">Tipi</Link></NavItem>
+
           </Nav>
           {authType}
         </Navbar>

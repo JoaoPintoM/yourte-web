@@ -30,6 +30,7 @@ class WallContainer extends Component {
       filterValues: {
 
       },
+      selectedFilters: [],
       currentColoc: {
         images: [],
         user: {
@@ -41,10 +42,9 @@ class WallContainer extends Component {
     }
   }
 
-  close () {
-    console.log('closing ?')
-    this.setState({ showModal: false })
-  }
+  close () { this.setState({ showModal: false }) }
+
+  closeFilters () { this.setState({ visibilityFilters: false }) }
 
   handleContactForm = (event) => {
     console.log(event.target.value)
@@ -62,6 +62,7 @@ class WallContainer extends Component {
   componentDidMount () {
     this.props.getCurrentSearch()
     this.close = this.close.bind(this)
+    this.closeFilters = this.closeFilters.bind(this)
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -112,7 +113,11 @@ class WallContainer extends Component {
       this.filters.splice(index, 1)
     }
 
+    console.log(' jOAO ')
+    console.log(this.state.filterChecked)
     console.log(this.filters)
+
+    this.setState({ selectedFilters: this.filters })
     this.props.setFilters({ filters: this.filters })
   }
 
@@ -151,11 +156,14 @@ class WallContainer extends Component {
       )
     })
 
-    let filtersScreen;
+    let filtersScreen = null;
      if (this.state.visibilityFilters) {
        filtersScreen = (<FiltersScreenComponent
+         showModal={this.state.visibilityFilters}
+         onClose={this.closeFilters}
          filterSelected={this.handleFilterClick}
-         filter={this.state.filterChecked}>
+         filter={this.state.filterChecked}
+         joaoFilters={this.state.selectedFilters}>
        </FiltersScreenComponent>)
      } else {
        filtersScreen = null

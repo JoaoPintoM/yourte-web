@@ -202,8 +202,6 @@ li.geosuggest__item:hover {
 
 
 .filtersSection {
-    text-align: left;
-    padding-left: 40px;
 }
 
 .formCreate {
@@ -224,11 +222,15 @@ li.geosuggest__item:hover {
 
 .filterGroupName {
   margin-bottom: 25px;
+  text-align: center;
 }
 
 .filterNameGroup {
-  margin-bottom: -5px;
   font-weight: bold;
+}
+
+.jCheckBoxFilters {
+  
 }
 
 .previousItem:hover {
@@ -256,4 +258,19 @@ a#basic-nav-dropdown {
 
 a#textConnexionFacebook {
   color: white;
+}
+
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+
+label {
+  cursor: pointer;
+}
+
+#filterModal .modal-dialog {
+  width: 90%;
 }

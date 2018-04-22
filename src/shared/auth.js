@@ -8,6 +8,8 @@ class AuthComponent extends Component {
   componentWillMount () {
     window.localStorage.setItem('token', this.props.params.token)
     this.props.getLocalUser()
+
+    setTimeout(() => this.props.router.push('/'), 1000)
   }
 
   render () {

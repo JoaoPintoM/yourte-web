@@ -109,11 +109,11 @@ class WallContainer extends Component {
     if (index === -1) {
       this.filters.push(value.target.name)
     } else {
-      this.filters.splice(index, 1);
+      this.filters.splice(index, 1)
     }
 
-    console.log(this.filters);
-    this.props.setFilters({ filters: this.filters });
+    console.log(this.filters)
+    this.props.setFilters({ filters: this.filters })
   }
 
   getImageMedUrl = (image) =>
@@ -151,7 +151,7 @@ class WallContainer extends Component {
       )
     })
 
-    let filtersScreen = null;
+    let filtersScreen;
      if (this.state.visibilityFilters) {
        filtersScreen = (<FiltersScreenComponent
          filterSelected={this.handleFilterClick}

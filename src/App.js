@@ -37,7 +37,7 @@ const isAuth = (nextState, replace, callback) => {
 }
 
 const Links = () =>
-  <nav>
+  <nav id="theHeader">
     <Link to="/">Home</Link>
     {
     // <Link to="/about">About</Link>

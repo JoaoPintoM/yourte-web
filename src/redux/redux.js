@@ -4,12 +4,14 @@ import {
   appReducer,
   usersReducer,
   colocationReducer,
-  searchReducer
+  searchReducer,
+  userColocationReducer,
 } from './reducers/index'
 
 const reducers = combineReducers({
   colocations: colocationReducer,
   users: usersReducer,
+  userColocs: userColocationReducer,
   search: searchReducer,
   app: appReducer,
   form: formReducer

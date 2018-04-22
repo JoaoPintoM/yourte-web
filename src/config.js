@@ -9,7 +9,8 @@ const dev = {
 }
 
 const prod = {
-  API: 'http://stag.ninja:1338'
+  API: 'http://stag.local:1338'
+  // API: 'http://stag.ninja:1338'
 }
 
 export const config = Object.assign(common, prod)

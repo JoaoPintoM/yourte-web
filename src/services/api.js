@@ -19,15 +19,11 @@ export const getAll = (dispatch) => {
       type: 'GET_ALL_START'
     })
 
-    console.log('GET ALL!!')
-    console.log(search)
-
     // const { lng, lat, minPrice, maxPrice } = search
     const params = _(search).omitBy(_.isUndefined).omitBy(_.isNull).value()
 
     setSearchLocalStorage(dispatch, search)
 
-    console.log(params)
     axios
       .get(`${config.API}/api/colocations`, {
         headers: {

@@ -38,7 +38,7 @@ class CreateForm extends Component {
          </div>
          <div>
            <p>{'Loyer mensuel'}</p>
-           <Field name="price" component="input" type="number" className="jInput" placeholder="450 euros"/>
+           <Field name="price" component="input" type="number" min="0" className="jInput" placeholder="450 euros"/>
          </div>
 
          </div>
@@ -53,7 +53,7 @@ class CreateForm extends Component {
           <div>
             <div>
               <p>{'Description Longue'}</p>
-              <Field name="longdesc" component="textarea"  className="jInput" rows="3"/>
+              <Field name="longdesc" component="textarea" className="jInput" rows="3"/>
             </div>
           </div>
 

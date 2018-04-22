@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { getLocalUser, disconnectLocaluser } from '../services/app'
 import { connect } from 'react-redux'
-import { AuthNavHeader, NotAuthNavHeader } from './dumbs/forHeader'
+import { AuthNavHeader, NotAuthNavHeader, AnotherComponent } from './dumbs/forHeader'
+import { ProfileUserComponent } from '../dashboard/dumbs/profile'
 import { config } from '../config'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 import { Link } from 'react-router'
@@ -27,14 +28,12 @@ class HeaderComponent extends Component {
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">
-                <img src="/img/tipi-icon.png" width="35" className="d-inline-block align-top" alt="" />
+                <img src="/img/tipi-icon.png" width="90" className="d-inline-block align-top" alt="" />
               </Link>
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
-        
-            <NavItem><Link to="/">Tipi</Link></NavItem>
-
+            {/* <NavItem><Link to="/">Tipi</Link></NavItem> */}
           </Nav>
           {authType}
         </Navbar>

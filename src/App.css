@@ -1,3 +1,5 @@
+/* Yourte blue: #4d85b7 */
+
 .App {
   text-align: center;
 }
@@ -36,7 +38,7 @@ nav a {
 }
 
 .userFbPicture {
-  width: 60px;
+  width: 50px;
 }
 
 .authHeader {
@@ -55,11 +57,23 @@ nav a {
 }
 
 
+#homeCenterBox {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 600px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+#homeTitle {
+  padding-top: 15px;
+  color: #4d85b7;
+  font-size: 2em;
+}
 
 .jumbotron {
   margin-bottom: 0px;
   height: 500px;
-  background: url('/img/fondhome.png') no-repeat center center;
+  background: url('/img/fondhome.jpeg') no-repeat center center;
   background-size: cover;
 }
 
@@ -75,6 +89,9 @@ nav a {
   padding: 15px;
   width: 50%;
   max-width: 400px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #4d85b7;
 }
 
 .geosuggest__suggests {
@@ -94,7 +111,8 @@ li.geosuggest__item {
 }
 li.geosuggest__item:hover {
   cursor: pointer;
-  background-color: #4caf50;
+  background-color: #4d85b7;
+  color:white;
 }
 
 .geocodingWallSection {
@@ -225,4 +243,17 @@ li.geosuggest__item:hover {
 }
 .marginTop30{
   margin-top: 30px;
+}
+
+.navbar-default {
+  background-color: #4d85b7 !important;
+  background-image: none !important;
+}
+
+a#basic-nav-dropdown {
+  color: white;
+}
+
+a#textConnexionFacebook {
+  color: white;
 }

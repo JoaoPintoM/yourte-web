@@ -13,7 +13,7 @@ export const AuthNavHeader = (props) =>
     </NavItem> */}
     <NavDropdown eventKey={3} title={props.user.username} id="basic-nav-dropdown" className="textDropDownMenu">
       <MenuItem eventKey={3.1}>Action</MenuItem>
-      <MenuItem eventKey={3.2}>Another action</MenuItem>
+      <MenuItem eventKey={3.2}><Link to="/dashboard">dashboard</Link></MenuItem>
       <MenuItem eventKey={3.3}><Link to="/colocations/create">Poster une annonce</Link></MenuItem>
       <MenuItem divider />
       <MenuItem onClick={ props.onDisconnect }>{'se déconnecter'}</MenuItem>

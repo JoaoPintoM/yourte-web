@@ -18,6 +18,7 @@ class ProfileUserComponent extends Component {
         <div className="col-md-6">
          <div>
            <p>{'Nom de votre colocation'}</p>
+           <Field name="name" component="input" type="text" className="jInput" placeholder="Maison du bonheur"/>
          </div>
          </div>
         </div>

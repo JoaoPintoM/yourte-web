@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, FormGroup, Col, Checkbox } from 'react-bootstrap'
+import { Form, FormGroup, Checkbox } from 'react-bootstrap'
 
 export const FiltersScreenComponent = (props) =>
   <div>

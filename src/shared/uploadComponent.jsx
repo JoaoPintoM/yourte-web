@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Dropzone from 'react-dropzone'
 import request from 'superagent'
 import { config } from '../config'
-import { ProgressBar } from 'react-bootstrap'
 
 const CLOUDINARY_UPLOAD_PRESET = 'teststagounet'
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/stagounet/upload'

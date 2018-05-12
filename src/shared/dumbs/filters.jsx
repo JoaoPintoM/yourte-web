@@ -1,12 +1,7 @@
 import React from 'react'
 import {
-  Grid,
   Form,
-  FormGroup,
-  Col,
-  Checkbox,
-  Modal,
-  Row
+  Modal
 } from 'react-bootstrap'
 
 export const FiltersScreenComponent = props => (

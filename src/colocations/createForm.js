@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Alert } from 'react-bootstrap'
 import UploadComponent from '../shared/uploadComponent'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { FiltersScreenComponent } from '../shared/dumbs/filtersSimple'
@@ -12,20 +11,9 @@ class CreateForm extends Component {
   handleFilterClick = (value) => this.props.filterSelected(value)
 
   render () {
-    const { handleSubmit, errorMessage, handleFilterClick, filterChecked } = this.props
+    const { handleSubmit, errorMessage, handleFilterClick } = this.props
     console.log(errorMessage)
-    const oioi = () => {
-      console.log('in oioi')
-      console.log(this.props)
-      // if (!this.errorMessage) {
-      //   return <p>'toto'</p>
-      // }
-      return (
-        <Alert bsStyle="warning">
-          <strong>{'joao'}</strong>
-        </Alert>
-      )
-    }
+
     return (
       <div className="container">
        <form onSubmit={handleSubmit} className="formCreate">

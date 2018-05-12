@@ -2,7 +2,7 @@ import _ from 'lodash'
 import axios from 'axios'
 import { config } from '../config'
 import { setSearchLocalStorage } from './app'
-var qs = require('qs');
+var qs = require('qs')
 
 export const setGeoPosition = (dispatch) =>
   (payload) => dispatch({ type: 'SET_GEOPOSITION', payload })

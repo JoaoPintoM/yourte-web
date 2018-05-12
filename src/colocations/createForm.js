@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import { Alert } from 'react-bootstrap'
 import UploadComponent from '../shared/uploadComponent'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
-import { FiltersScreenComponent } from '../shared/dumbs/filters'
+import { FiltersScreenComponent } from '../shared/dumbs/filtersSimple'
 
 class CreateForm extends Component {
 

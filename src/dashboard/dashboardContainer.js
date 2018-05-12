@@ -25,7 +25,6 @@ class DashBoardContainer extends Component {
         'Authorization': 'Bearer ' + window.localStorage.getItem('token')
       }
     }).then((response) => {
-      console.log(response.data)
       this.setState({ favorites: response.data.favorites })
     }).catch((error) => { console.log(error) })
   }

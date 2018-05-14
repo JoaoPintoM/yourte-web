@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { getLocalUser, disconnectLocaluser } from '../services/app'
 import { connect } from 'react-redux'
-import { AuthNavHeader, NotAuthNavHeader, AnotherComponent } from './dumbs/forHeader'
+import { AuthNavHeader, NotAuthNavHeader } from './dumbs/forHeader'
 // import { ProfileUserComponent } from '../dashboard/dumbs/profile'
 import { config } from '../config'
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router'
 
 class HeaderComponent extends Component {

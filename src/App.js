@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
 import './App.css'
-import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import HomeContainer from './home/homeContainer'
 import DashBoardContainer from './dashboard/dashboardContainer'
 import WallContainer from './wall/wallContainer'
@@ -35,20 +34,6 @@ const isAuth = (nextState, replace, callback) => {
   }
   callback()
 }
-
-const Links = () =>
-  <nav id="theHeader">
-    <Link to="/">Home</Link>
-    {
-    // <Link to="/about">About</Link>
-    // <Link to="/contact">Contact</Link>
-    // <Link to="/colocswall">colocsWall</Link>
-    // <Link to="/colocation">coloc</Link>
-    }
-    <Link to="/wall">wall</Link>
-     <Link to="/colocswall">colocsWall</Link>
-    <Link to="/colocations/create">create</Link>
-  </nav>
 
 class App extends Component {
   render () {

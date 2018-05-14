@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Button, Modal, Jumbotron, Col } from 'react-bootstrap'
-import { Link } from 'react-router'
 import GeocodingSearchBox from '../shared/geocodingSearchBox'
 import { connect } from 'react-redux'
 import { setGeoPosition } from '../services/api'

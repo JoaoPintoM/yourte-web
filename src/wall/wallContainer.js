@@ -130,7 +130,6 @@ class WallContainer extends Component {
       return `${s.substring(0, 40)}...`
     }
     const userImgStyle = { width: '60px' }
-    const imgStyle = { width: '250px' }
     const colocs = this.props.colocs.map((r) => {
       return (
         <Col className='wallVignette' sm={6} md={4} lg={3} key={r.id} onClick={ this.open.bind(this, r) }>
